@@ -66,7 +66,7 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] Public API snapshot checker
 - [x] Stable release candidate checklist and workflow
 
-## v1.0 — Mature companion release
+## v1.0.0 — Mature companion release
 
 - [x] Final stable public API snapshot
 - [x] Versioned example contracts
@@ -75,9 +75,23 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] Package and citation metadata promoted to 1.0.0
 - [x] `v1.0.0` Git tag and GitHub release created after successful final Quality verification
 
-## After 1.0
+## v1.0.1 — Packaging, supply-chain, and maintenance hardening
 
-Future work should be incremental and backward-compatible within 1.x: additional examples, optional adapters, accessibility improvements, evaluation scenarios, documentation, and maintenance automation. Major API redesigns should wait for a future major version.
+- [x] PEP 561 `py.typed` package marker
+- [x] `python -m umai` entry point
+- [x] Source/wheel distribution content validation
+- [x] Full-SHA external GitHub Action pinning
+- [x] Official latest Action releases reviewed and pinned
+- [x] Automated commercial-manuscript boundary check
+- [x] Canonical Gumroad/repository/contact link validation
+- [x] Release-documentation/version consistency validation
+- [x] Expanded security, privacy, dependency, accessibility, installation, signing, and repository-settings documentation
+- [x] `v1.0.1` released from a Quality-verified commit
+- [x] Wheel, source archive, and SHA-256 manifest attached from the immutable `v1.0.1` tag
+
+## After 1.0.1
+
+Future work should remain incremental and backward-compatible within 1.x: additional examples, optional adapters, accessibility improvements, evaluation scenarios, documentation, maintenance automation, and future security updates. Major API redesigns should wait for a future major version.
 
 ## Complete book roadmap
 
