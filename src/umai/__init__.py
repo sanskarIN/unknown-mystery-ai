@@ -7,8 +7,10 @@ from .budget import TokenPricing, estimate_token_cost, requests_within_budget
 from .cache import BoundedCache
 from .compare import MetricDelta, ReleaseComparison, compare_metrics
 from .config import FeatureFlags, parse_bool
+from .deprecation import DeprecatedFeature, warn_deprecated
 from .drift import mean_shift, standardized_mean_shift
 from .evaluation import accuracy_score, classification_report
+from .evidence import EvidenceBundle
 from .experiments import ExperimentRecord, best_record
 from .fallback import FallbackResult, run_fallback_chain
 from .gates import GateResult, ReleaseDecision, evaluate_release_gates
@@ -23,6 +25,7 @@ from .rate_limit import FixedWindowRateLimiter
 from .registry import ArtifactRegistry, ArtifactVersion
 from .regression import RegressionCase, RegressionResult, evaluate_output
 from .release import ReleaseManifest
+from .reporting import key_value_report, to_json, to_serializable
 from .reproducibility import fingerprint_json, seed_everything
 from .retrieval import Document, SimpleRetriever
 from .retry import retry_call
@@ -39,11 +42,13 @@ __all__ = [
     "chunk_text",
     "classification_report",
     "compare_metrics",
+    "DeprecatedFeature",
     "Document",
     "eligible_placements",
     "estimate_token_cost",
     "evaluate_output",
     "evaluate_release_gates",
+    "EvidenceBundle",
     "ExperimentRecord",
     "FallbackResult",
     "FeatureFlags",
@@ -54,6 +59,7 @@ __all__ = [
     "GUMROAD_STORE",
     "InferenceRequest",
     "InferenceResponse",
+    "key_value_report",
     "LocalEndpoint",
     "mean_metric",
     "mean_shift",
@@ -81,9 +87,12 @@ __all__ = [
     "SimpleRetriever",
     "standardized_mean_shift",
     "synthetic_metric_series",
+    "to_json",
     "TokenPricing",
+    "to_serializable",
     "ValidationIssue",
     "validate_record",
+    "warn_deprecated",
 ]
 
-__version__ = "0.5.0"
+__version__ = "0.6.0"
