@@ -6,11 +6,31 @@ All notable changes to the open-source companion repository are documented here.
 
 ## [Unreleased]
 
-### Planned
+Future 1.x work should remain backward-compatible with the documented stable public API unless a security or material correctness issue requires otherwise.
 
-- Final stable public API review
-- Versioned example contracts
-- Tagged 1.0 release process
+## [1.0.0] - 2026-08-17
+
+### Stable milestone
+
+- Declared the documented `umai.__all__` surface stable for the 1.x line
+- Added `api/public_api_1_0.json` as the stable compatibility snapshot
+- Published 1.x stability guarantees and versioned example contracts
+- Added the stable 1.0 maintainer verification checklist
+- Updated package metadata to Production/Stable
+- Updated citation metadata to 1.0.0
+- Published comprehensive 1.0 release notes and README
+
+### Included capability areas
+
+- Reproducibility and fingerprints
+- Classification and retrieval evaluation
+- RAG and transparent agent teaching patterns
+- Versioned prompts and regression fixtures
+- Experiment, artifact, release, and governance evidence
+- Local serving, monitoring, deployment placement, and configuration patterns
+- Privacy redaction, validation, budgets, caching, retry, fallback, and rate limiting
+- Structured JSON/text reporting and dependency-free CLI
+- Cross-platform examples, CI, quality gates, builds, checksums, and release evidence
 
 ## [0.6.0] - 2026-08-17
 
