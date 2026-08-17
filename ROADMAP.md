@@ -45,24 +45,32 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] Prompt regression fixtures
 - [x] Release comparison report primitives
 - [x] Reliability fallback simulation
-- [x] Examples and unit tests for the expanded evaluation utilities
+- [x] Examples and unit tests for expanded evaluation utilities
 
 ## v0.5 — Quality and packaging
 
-- [ ] Public API compatibility checks
-- [ ] Cross-platform example smoke workflow
-- [ ] Documentation link validation
-- [ ] Package metadata validation beyond build smoke tests
-- [ ] Release artifact checksum manifest
-- [ ] Maintainer quality checklist
+- [x] Public API compatibility checks
+- [x] Cross-platform example smoke workflow
+- [x] Documentation link validation
+- [x] Package metadata/version validation
+- [x] Release artifact checksum manifest generator
+- [x] Maintainer quality checklist
+- [x] Comprehensive quality workflow and build evidence
+
+## v0.6 — Stable API preparation
+
+- [ ] Formal public API compatibility policy
+- [ ] Deprecation helper and policy example
+- [ ] Structured JSON export for experiment/release evidence
+- [ ] More CLI-friendly reporting helpers
+- [ ] Stable release candidate checklist
 
 ## v1.0 — Mature companion release
 
 - [ ] Stable documented public API
-- [ ] Expanded cross-platform tests
 - [ ] Versioned example contracts
-- [ ] Maintainer release checklist
 - [ ] Tagged stable companion release
+- [ ] Maintainer release checklist completed against the tag
 
 ## Complete book roadmap
 
