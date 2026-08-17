@@ -32,20 +32,29 @@ The companion repository grows through small, reviewable additions rather than c
 
 ## v0.3 — Deployment companion
 
-- [ ] Dependency-light HTTP serving reference example
-- [ ] Container example with non-root runtime guidance
-- [ ] Release-gate policy example
-- [ ] Synthetic monitoring dashboard data generator
-- [ ] Edge/cloud release comparison example
-- [ ] Configuration and feature-flag reference pattern
+- [x] Local serving contract reference
+- [x] Non-root container example
+- [x] Release-gate policy example
+- [x] Synthetic monitoring dashboard data generator
+- [x] Edge/cloud release comparison constraints
+- [x] Configuration and feature-flag reference pattern
 
 ## v0.4 — Evaluation expansion
 
-- [ ] Retrieval evaluation dataset format
-- [ ] Ranking metrics baseline
-- [ ] Prompt regression fixtures
-- [ ] Release comparison report generator
-- [ ] Reliability and fallback simulation
+- [x] Retrieval ranking metrics baseline
+- [x] Prompt regression fixtures
+- [x] Release comparison report primitives
+- [x] Reliability fallback simulation
+- [x] Examples and unit tests for the expanded evaluation utilities
+
+## v0.5 — Quality and packaging
+
+- [ ] Public API compatibility checks
+- [ ] Cross-platform example smoke workflow
+- [ ] Documentation link validation
+- [ ] Package metadata validation beyond build smoke tests
+- [ ] Release artifact checksum manifest
+- [ ] Maintainer quality checklist
 
 ## v1.0 — Mature companion release
 
