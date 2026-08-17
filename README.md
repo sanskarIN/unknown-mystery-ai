@@ -132,7 +132,8 @@ Recommended starting points:
 - [`docs/RELEASE_ASSETS.md`](docs/RELEASE_ASSETS.md) — wheel/source/checksum release provenance
 - [`docs/RELEASE_STATUS.md`](docs/RELEASE_STATUS.md) — stable release identity
 - [`docs/MAINTENANCE.md`](docs/MAINTENANCE.md) — post-1.0 maintenance policy
-- [`docs/RELEASE_1_0_CHECKLIST.md`](docs/RELEASE_1_0_CHECKLIST.md) — stable release verification
+- [`docs/RELEASE_1_0_CHECKLIST.md`](docs/RELEASE_1_0_CHECKLIST.md) — original stable 1.0 verification
+- [`docs/RELEASE_1_0_1_CHECKLIST.md`](docs/RELEASE_1_0_1_CHECKLIST.md) — 1.0.1 maintenance release verification
 - [`docs/COMPANION_RELEASE_1.0.md`](docs/COMPANION_RELEASE_1.0.md) — 1.0.0 release notes
 - [`docs/COMPANION_RELEASE_1.0.1.md`](docs/COMPANION_RELEASE_1.0.1.md) — 1.0.1 hardening release notes
 - [`docs/GUMROAD.md`](docs/GUMROAD.md) — official commercial publication destination
@@ -144,6 +145,7 @@ The repository includes automated checks for:
 - supported Python tests,
 - cross-platform numbered example smoke runs,
 - package metadata/version consistency,
+- release notes/changelog/version consistency,
 - PEP 561 typing marker packaging,
 - full-commit-SHA GitHub Action pins,
 - public-repository commercial manuscript boundaries,
