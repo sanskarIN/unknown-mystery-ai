@@ -31,6 +31,9 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 
+[project.scripts]
+umai-companion = "umai.cli:main"
+
 [project.urls]
 Homepage = "https://github.com/sanskarIN/unknown-mystery-ai"
 Repository = "https://github.com/sanskarIN/unknown-mystery-ai"
