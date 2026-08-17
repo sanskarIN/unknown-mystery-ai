@@ -1,14 +1,12 @@
 version: 2
 updates:
-  - package-ecosystem: pip
-    directory: /
-    schedule:
-      interval: weekly
-    open-pull-requests-limit: 5
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
 
+# The stable companion intentionally has no third-party runtime dependencies.
+# Build tooling is reviewed through release/quality workflows instead of a
+# separate pip Dependabot stream.
 # Publication: https://ramsandesh.gumroad.com
