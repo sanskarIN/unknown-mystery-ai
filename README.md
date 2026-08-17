@@ -11,18 +11,18 @@
 <p align="center">
   <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml/badge.svg"></a>
   <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/quality.yml"><img alt="Quality" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/quality.yml/badge.svg"></a>
-  <img alt="Version 1.0.0" src="https://img.shields.io/badge/version-1.0.0-brightgreen">
+  <img alt="Version 1.0.1" src="https://img.shields.io/badge/version-1.0.1-brightgreen">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-blue"></a>
   <a href="https://ramsandesh.gumroad.com"><img alt="Gumroad" src="https://img.shields.io/badge/Gumroad-Official%20Store-ff90e8"></a>
 </p>
 
 > ## 🛒 Official store: **https://ramsandesh.gumroad.com**
 
-This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Version **1.0.0** provides a stable, dependency-light collection of code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, tests, and engineering documentation that complement the 120-chapter AI mastery journey.
+This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Version **1.0.1** is a backward-compatible stable maintenance release with dependency-light code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, packaging checks, supply-chain hardening, tests, and engineering documentation that complement the 120-chapter AI mastery journey.
 
 The repository is intentionally **inspectable, testable, local/synthetic by default, and safe for learning**. Small teaching utilities are not presented as automatic substitutes for production security, privacy, scalability, governance, or reliability engineering.
 
-## Stable 1.0 areas
+## Stable 1.x areas
 
 - AI/ML evaluation and reproducibility
 - Text normalization and deterministic chunking
@@ -33,8 +33,9 @@ The repository is intentionally **inspectable, testable, local/synthetic by defa
 - Release gates, release comparisons, and stable API snapshots
 - Local serving contracts, container guidance, monitoring data, placement, and feature flags
 - Privacy redaction, structured validation, cost budgeting, caching, retries, fallback, and rate limiting
-- CLI-friendly JSON/text reporting
-- Responsible AI, privacy, security, reproducibility, and governance checklists
+- CLI-friendly JSON/text reporting and `python -m umai` execution
+- PEP 561 inline typing support
+- Responsible AI, privacy, security, reproducibility, supply-chain, accessibility, and governance guidance
 
 ## Quick start
 
@@ -58,6 +59,12 @@ umai-companion version
 umai-companion info
 umai-companion info --json
 umai-companion store
+```
+
+The module form is also supported:
+
+```bash
+python -m umai info
 ```
 
 Or use the Makefile on compatible systems:
@@ -85,10 +92,11 @@ unknown-mystery-ai/
 ├── docs/                      # Architecture, API, learning, governance, release docs
 ├── examples/                  # Small runnable teaching examples
 ├── scripts/                   # Quality and release-evidence scripts
-├── src/umai/                  # Stable dependency-light companion package
+├── src/umai/                  # Stable dependency-light typed companion package
 ├── tests/                     # Standard-library unit tests
 ├── .github/                   # CI, quality, funding, Dependabot, templates
 ├── Dockerfile                 # Non-root companion container example
+├── MANIFEST.in                # Source distribution manifest
 ├── LICENSE                    # Apache License 2.0 for source code
 ├── NOTICE                     # Book/content rights notice
 ├── Makefile                   # Common local development commands
@@ -106,14 +114,16 @@ Recommended starting points:
 - [`docs/STABILITY.md`](docs/STABILITY.md) — 1.x stability guarantees
 - [`docs/CLI.md`](docs/CLI.md) — command-line usage
 - [`docs/INSTALLATION.md`](docs/INSTALLATION.md) — clone and stable-release installation
+- [`docs/TYPING.md`](docs/TYPING.md) — inline typing and PEP 561 support
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — design principles and trust boundaries
 - [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) — local development workflow
 - [`docs/TESTING_STRATEGY.md`](docs/TESTING_STRATEGY.md) — automated validation layers
 - [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) — trust boundaries and safe defaults
 - [`docs/PRIVACY_MODEL.md`](docs/PRIVACY_MODEL.md) — privacy and telemetry model
 - [`docs/SUPPLY_CHAIN.md`](docs/SUPPLY_CHAIN.md) — software supply-chain controls
-- [`docs/GITHUB_ACTIONS_SECURITY.md`](docs/GITHUB_ACTIONS_SECURITY.md) — full-SHA action pinning policy
+- [`docs/GITHUB_ACTIONS_SECURITY.md`](docs/GITHUB_ACTIONS_SECURITY.md) — full-SHA Action pinning policy
 - [`docs/DEPENDENCIES.md`](docs/DEPENDENCIES.md) — minimal dependency policy
+- [`docs/DEPENDABOT.md`](docs/DEPENDABOT.md) — dependency-update review policy
 - [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md) — accessible documentation/output guidance
 - [`docs/EXAMPLE_CONTRACTS.md`](docs/EXAMPLE_CONTRACTS.md) — numbered example compatibility rules
 - [`docs/BRANCH_PROTECTION.md`](docs/BRANCH_PROTECTION.md) — recommended `main` protection settings
@@ -123,7 +133,8 @@ Recommended starting points:
 - [`docs/RELEASE_STATUS.md`](docs/RELEASE_STATUS.md) — stable release identity
 - [`docs/MAINTENANCE.md`](docs/MAINTENANCE.md) — post-1.0 maintenance policy
 - [`docs/RELEASE_1_0_CHECKLIST.md`](docs/RELEASE_1_0_CHECKLIST.md) — stable release verification
-- [`docs/COMPANION_RELEASE_1.0.md`](docs/COMPANION_RELEASE_1.0.md) — stable release notes
+- [`docs/COMPANION_RELEASE_1.0.md`](docs/COMPANION_RELEASE_1.0.md) — 1.0.0 release notes
+- [`docs/COMPANION_RELEASE_1.0.1.md`](docs/COMPANION_RELEASE_1.0.1.md) — 1.0.1 hardening release notes
 - [`docs/GUMROAD.md`](docs/GUMROAD.md) — official commercial publication destination
 
 ## Quality gates
@@ -133,20 +144,23 @@ The repository includes automated checks for:
 - supported Python tests,
 - cross-platform numbered example smoke runs,
 - package metadata/version consistency,
+- PEP 561 typing marker packaging,
 - full-commit-SHA GitHub Action pins,
 - public-repository commercial manuscript boundaries,
 - canonical Gumroad/repository/contact links in key files,
 - internal Markdown links,
 - public API snapshot consistency,
-- wheel/source builds,
+- wheel/source distribution contents,
 - SHA-256 build manifests,
 - release-candidate build evidence.
 
 ## Stable GitHub release
 
-The `v1.0.0` GitHub software release includes the companion wheel, source distribution, and `SHA256SUMS.txt`, built from the immutable stable tag. These are software companion artifacts only; the paid eBook and commercial artwork remain outside the public GitHub release.
+The stable GitHub software release contains the companion wheel, source distribution, and `SHA256SUMS.txt`, built from the immutable version tag. These are software companion artifacts only; the paid eBook and commercial artwork remain outside the public GitHub release.
 
-Release page: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.0**
+Current stable release page: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.1**
+
+Historical v1.0.0 release: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.0**
 
 ## Book vs. code licensing
 
