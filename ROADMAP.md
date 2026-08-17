@@ -68,11 +68,16 @@ The companion repository grows through small, reviewable additions rather than c
 
 ## v1.0 — Mature companion release
 
-- [ ] Final stable public API snapshot
-- [ ] Versioned example contracts
-- [ ] Stable architecture and support guarantees
-- [ ] 1.0 maintainer release checklist
-- [ ] Tagged stable companion release after CI verification
+- [x] Final stable public API snapshot
+- [x] Versioned example contracts
+- [x] Stable architecture and support guarantees
+- [x] 1.0 maintainer release checklist
+- [x] Package and citation metadata promoted to 1.0.0
+- [ ] `v1.0.0` Git tag and GitHub release — create only after final CI verification
+
+## After 1.0
+
+Future work should be incremental and backward-compatible within 1.x: additional examples, optional adapters, accessibility improvements, evaluation scenarios, documentation, and maintenance automation. Major API redesigns should wait for a future major version.
 
 ## Complete book roadmap
 
