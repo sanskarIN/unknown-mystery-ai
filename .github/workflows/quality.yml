@@ -19,6 +19,8 @@ jobs:
           python-version: "3.12"
       - name: Validate metadata
         run: python scripts/check_package_metadata.py
+      - name: Validate release documentation
+        run: python scripts/check_release_documentation.py
       - name: Validate pinned GitHub Actions
         run: python scripts/check_workflow_pins.py
       - name: Validate public repository publication boundary
