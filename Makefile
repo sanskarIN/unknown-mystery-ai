@@ -9,12 +9,10 @@ test:
 	$(PYTHON) -m unittest discover -s tests -v
 
 examples:
-	$(PYTHON) examples/01_reproducible_experiment.py
-	$(PYTHON) examples/02_evaluation_demo.py
-	$(PYTHON) examples/03_rag_demo.py
-	$(PYTHON) examples/04_agent_demo.py
-	$(PYTHON) examples/05_release_manifest.py
-	$(PYTHON) examples/06_observability_demo.py
+	@for file in examples/[0-9][0-9]_*.py; do \
+		echo "==> $$file"; \
+		$(PYTHON) $$file || exit 1; \
+	done
 
 build:
 	$(PYTHON) -m build
