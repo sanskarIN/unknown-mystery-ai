@@ -8,10 +8,21 @@ All notable changes to the open-source companion repository are documented here.
 
 ### Planned
 
-- Stable public API review
-- Cross-platform example smoke testing
-- Additional packaging and release automation
+- Stable public API review and compatibility policy
+- Additional release automation and tagged milestone process
 - More portfolio/reference scenarios
+
+## [0.5.0] - 2026-08-17
+
+### Added
+
+- Public API compatibility smoke test
+- Cross-platform example smoke workflow
+- Internal Markdown link validation script and workflow
+- Package metadata/version consistency validation
+- SHA-256 release artifact manifest generator
+- Comprehensive quality workflow with build evidence upload
+- Maintainer quality checklist and checksum documentation
 
 ## [0.4.0] - 2026-08-17
 
