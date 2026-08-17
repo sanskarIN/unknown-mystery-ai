@@ -5,12 +5,17 @@
 </p>
 
 <p align="center">
-  <a href="https://ramsandesh.gumroad.com"><img src="assets/gumroad-store-badge.svg" alt="Get The Unknown Mystery of the AI on Gumroad" width="360"></a>
+  <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="LICENSE"><img alt="License: Apache-2.0" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"></a>
 </p>
 
-> **Official store:** **https://ramsandesh.gumroad.com**
+<p align="center">
+  <a href="https://ramsandesh.gumroad.com"><img src="assets/gumroad-store-badge.svg" alt="Get The Unknown Mystery of the AI on Gumroad" width="420"></a>
+</p>
 
-This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. It provides selected code examples, reproducibility utilities, exercises, project starters, evaluation helpers, and practical learning resources that complement the 120-chapter AI mastery series.
+> ## 🛒 Official book store: **https://ramsandesh.gumroad.com**
+
+This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. It provides selected code examples, reproducibility utilities, exercises, project starters, evaluation helpers, observability primitives, and practical learning resources that complement the 120-chapter AI mastery series.
 
 ## What this repository covers
 
@@ -47,13 +52,14 @@ python examples/02_evaluation_demo.py
 python examples/03_rag_demo.py
 python examples/04_agent_demo.py
 python examples/05_release_manifest.py
+python examples/06_observability_demo.py
 ```
 
 ## Repository map
 
 ```text
 unknown-mystery-ai/
-├── assets/                    # Store badge and visual repository assets
+├── assets/                    # Gumroad/store and visual repository assets
 ├── docs/                      # Companion documentation and learning roadmaps
 ├── examples/                  # Small, readable runnable examples
 ├── src/umai/                  # Reusable companion utilities
@@ -64,6 +70,16 @@ unknown-mystery-ai/
 └── README.md
 ```
 
+## Start here
+
+- [`docs/BOOK_COMPANION.md`](docs/BOOK_COMPANION.md) — how to use the repo with the book
+- [`docs/LEARNING_PATH.md`](docs/LEARNING_PATH.md) — staged learning path
+- [`docs/PROJECTS.md`](docs/PROJECTS.md) — portfolio project ideas
+- [`docs/REPRODUCIBILITY.md`](docs/REPRODUCIBILITY.md) — reproducibility checklist
+- [`docs/OBSERVABILITY.md`](docs/OBSERVABILITY.md) — privacy-aware telemetry guidance
+- [`docs/RESPONSIBLE_AI_CHECKLIST.md`](docs/RESPONSIBLE_AI_CHECKLIST.md) — release review checklist
+- [`ROADMAP.md`](ROADMAP.md) — companion repository roadmap
+
 ## Book vs. code licensing
 
 The **source code** in this repository is licensed under the **Apache License 2.0** unless a file says otherwise.
@@ -72,20 +88,18 @@ The complete eBook, chapter text, PDF/DOCX editions, cover artwork, certificate 
 
 See [`NOTICE`](NOTICE) and [`docs/LICENSE_SCOPE.md`](docs/LICENSE_SCOPE.md) for details.
 
-## Official book store
+## 🛒 Get the complete book and official releases
 
-### 🛒 Get the book and official releases
+### **https://ramsandesh.gumroad.com**
 
-**https://ramsandesh.gumroad.com**
-
-The Gumroad store is the primary place for book releases, updated editions, and related publishing materials.
+The Gumroad store is the primary place for the complete eBook, updated editions, and related publishing materials.
 
 ## Author and project links
 
 - Author: **Ram Sandesh**
 - GitHub: **https://github.com/sanskarIN**
 - Repository: **https://github.com/sanskarIN/unknown-mystery-ai**
-- Gumroad: **https://ramsandesh.gumroad.com**
+- **Gumroad: https://ramsandesh.gumroad.com**
 - Contact: **sanskarin@outlook.in**
 
 ## Contributing
@@ -99,6 +113,6 @@ Please do not publish secrets, private data, credentials, or sensitive user info
 ---
 
 <p align="center">
-  <strong>Support the complete AI learning journey:</strong><br>
-  <a href="https://ramsandesh.gumroad.com"><strong>https://ramsandesh.gumroad.com</strong></a>
+  <strong>📘 Continue the complete 120-chapter AI mastery journey</strong><br><br>
+  <a href="https://ramsandesh.gumroad.com"><strong>🛒 https://ramsandesh.gumroad.com</strong></a>
 </p>
