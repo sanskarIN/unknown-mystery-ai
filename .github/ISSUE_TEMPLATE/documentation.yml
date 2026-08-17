@@ -1,0 +1,36 @@
+name: Documentation issue
+description: Report unclear, missing, or incorrect companion documentation.
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve the documentation.
+        Official book store: https://ramsandesh.gumroad.com
+  - type: input
+    id: location
+    attributes:
+      label: Documentation location
+      description: File, heading, or page URL where the issue appears.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is unclear or incorrect?
+      description: Describe the problem without including private data or paid manuscript content.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested improvement
+      description: Optional wording or structure that would make the companion documentation clearer.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I have not included secrets, private data, or commercial manuscript text.
+          required: true
