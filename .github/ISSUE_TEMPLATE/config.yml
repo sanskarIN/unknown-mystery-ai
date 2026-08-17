@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Official Gumroad Store
+    url: https://ramsandesh.gumroad.com
+    about: Get the official book, updated editions, and publication resources.
+  - name: General Support
+    url: https://github.com/sanskarIN/unknown-mystery-ai/blob/main/SUPPORT.md
+    about: Read the support guide before opening an issue.
