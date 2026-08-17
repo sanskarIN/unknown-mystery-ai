@@ -7,7 +7,7 @@ authors:
     given-names: "Ram"
 repository-code: "https://github.com/sanskarIN/unknown-mystery-ai"
 url: "https://ramsandesh.gumroad.com"
-version: "0.1.0"
+version: "1.0.0"
 date-released: "2026-08-17"
 license: Apache-2.0
 keywords:
@@ -19,3 +19,5 @@ keywords:
   - agents
   - MLOps
   - responsible AI
+  - AI evaluation
+  - AI education
