@@ -8,9 +8,22 @@ All notable changes to the open-source companion repository are documented here.
 
 ### Planned
 
-- Stable public API review and compatibility policy
-- Additional release automation and tagged milestone process
-- More portfolio/reference scenarios
+- Final stable public API review
+- Versioned example contracts
+- Tagged 1.0 release process
+
+## [0.6.0] - 2026-08-17
+
+### Added
+
+- Formal public API compatibility and deprecation policy
+- `DeprecatedFeature` and actionable deprecation warning helper
+- Deterministic structured JSON and key/value reporting helpers
+- Structured `EvidenceBundle` for release evidence
+- Dependency-free `umai-companion` CLI and JSON output
+- Public API 0.6 snapshot and compatibility checker
+- Release-candidate checklist and manual release-candidate workflow
+- Expanded API and examples documentation
 
 ## [0.5.0] - 2026-08-17
 
