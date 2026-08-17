@@ -8,9 +8,32 @@ All notable changes to the open-source companion repository are documented here.
 
 ### Planned
 
-- Additional framework-specific adapters kept separate from the dependency-light core
-- More evaluation and reliability scenarios
-- Additional portfolio starters and deployment simulations
+- Stable public API review
+- Cross-platform example smoke testing
+- Additional packaging and release automation
+- More portfolio/reference scenarios
+
+## [0.4.0] - 2026-08-17
+
+### Added
+
+- Retrieval ranking metrics: precision@k, recall@k, reciprocal rank
+- Transparent prompt/output regression fixtures
+- Release metric comparison helpers
+- Explicit fallback chains for recoverable failures
+- Examples and unit tests for each evaluation/reliability utility
+
+## [0.3.0] - 2026-08-17
+
+### Added
+
+- Local inference request/response serving contracts
+- Non-root container example and container safety guide
+- Explicit release-gate decisions
+- Deterministic synthetic monitoring series
+- Edge/cloud placement constraint comparison
+- Feature-flag configuration helpers
+- Deployment-focused examples and tests
 
 ## [0.2.0] - 2026-08-17
 
@@ -32,12 +55,6 @@ All notable changes to the open-source companion repository are documented here.
 - Architecture, development, release, troubleshooting, FAQ, API, examples, tests, and chapter companion documentation
 - CODEOWNERS, Dependabot, EditorConfig, Makefile, release-check workflow, and GitHub funding link
 - Expanded README navigation and highlighted Gumroad publication links
-
-### Changed
-
-- Package version advanced to 0.2.0
-- Public package exports expanded for the new companion utilities
-- Makefile now discovers and runs the complete numbered example suite
 
 ## [0.1.0] - 2026-08-17
 
