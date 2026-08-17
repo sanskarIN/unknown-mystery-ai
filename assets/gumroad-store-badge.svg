@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220" role="img" aria-labelledby="title desc">
+  <title id="title">Ram Sandesh Gumroad Store</title>
+  <desc id="desc">Custom store badge linking readers to https://ramsandesh.gumroad.com</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f45"/>
+      <stop offset="1" stop-color="#163d73"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="892" height="212" rx="34" fill="url(#bg)" stroke="#f2c35b" stroke-width="8"/>
+  <circle cx="112" cy="110" r="66" fill="#f2c35b"/>
+  <path d="M82 78h60v20h-38v24h34c-6 25-25 40-50 40-31 0-54-23-54-52s23-52 54-52c18 0 33 6 44 18l-16 15c-7-7-16-11-28-11-19 0-32 13-32 30s13 30 32 30c13 0 22-5 27-14H82z" transform="translate(24 0)" fill="#0b1f45"/>
+  <text x="215" y="84" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#ffffff">GET THE COMPLETE BOOK</text>
+  <text x="215" y="137" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#f2c35b">ramsandesh.gumroad.com</text>
+  <text x="215" y="177" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#d7e8ff">The Unknown Mystery of the AI • Ram Sandesh</text>
+</svg>
