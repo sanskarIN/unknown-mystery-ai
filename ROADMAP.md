@@ -2,7 +2,7 @@
 
 > 🛒 **Official Gumroad store:** **https://ramsandesh.gumroad.com**
 
-The companion repository will grow through small, reviewable additions rather than copying the commercial manuscript.
+The companion repository grows through small, reviewable additions rather than copying the commercial manuscript.
 
 ## v0.1 — Foundation
 
@@ -16,33 +16,47 @@ The companion repository will grow through small, reviewable additions rather th
 - [x] Unit tests
 - [x] CI workflow
 
-## v0.2 — Learning resources
+## v0.2 — Engineering companion
 
-- [ ] Additional evaluation examples
-- [ ] Small dataset-card template
-- [ ] Model-card template
-- [ ] Responsible-AI review checklist
-- [ ] Observability event schema example
-- [ ] More portfolio starter projects
+- [x] Model-card and dataset-card templates
+- [x] Responsible-AI review checklist
+- [x] Privacy-aware observability example
+- [x] Text chunking and prompt versioning
+- [x] Drift and cost-budget examples
+- [x] Privacy redaction and structured validation
+- [x] Experiment and artifact governance helpers
+- [x] Bounded cache, retry, and rate-limit helpers
+- [x] Expanded tests and runnable examples
+- [x] Architecture, API, release, troubleshooting, and FAQ documentation
+- [x] Dependabot, CODEOWNERS, funding, and release-check automation
 
 ## v0.3 — Deployment companion
 
-- [ ] API serving example
-- [ ] Container example
-- [ ] Release-gate example
-- [ ] Monitoring dashboard data generator
+- [ ] Dependency-light HTTP serving reference example
+- [ ] Container example with non-root runtime guidance
+- [ ] Release-gate policy example
+- [ ] Synthetic monitoring dashboard data generator
 - [ ] Edge/cloud release comparison example
+- [ ] Configuration and feature-flag reference pattern
+
+## v0.4 — Evaluation expansion
+
+- [ ] Retrieval evaluation dataset format
+- [ ] Ranking metrics baseline
+- [ ] Prompt regression fixtures
+- [ ] Release comparison report generator
+- [ ] Reliability and fallback simulation
 
 ## v1.0 — Mature companion release
 
-- [ ] Stable documentation structure
-- [ ] Expanded tests
-- [ ] Versioned examples
-- [ ] Contribution review checklist
-- [ ] Tagged companion release
+- [ ] Stable documented public API
+- [ ] Expanded cross-platform tests
+- [ ] Versioned example contracts
+- [ ] Maintainer release checklist
+- [ ] Tagged stable companion release
 
 ## Complete book roadmap
 
-The full 120-chapter progression is available at:
+The full 120-chapter learning progression and official commercial editions are available at:
 
 ### https://ramsandesh.gumroad.com
