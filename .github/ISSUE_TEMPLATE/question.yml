@@ -1,0 +1,36 @@
+name: Companion question
+description: Ask a focused question about repository code, examples, or documentation.
+title: "[Question]: "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please keep questions focused on the open-source companion repository.
+        Official commercial book store: https://ramsandesh.gumroad.com
+  - type: input
+    id: area
+    attributes:
+      label: Area
+      description: Example filename, module, workflow, or documentation page.
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: Explain what you are trying to understand or accomplish.
+    validations:
+      required: true
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What have you tried?
+      description: Include safe commands, outputs, or a minimal synthetic example when useful.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety and scope
+      options:
+        - label: I have removed secrets, credentials, private data, and paid manuscript content.
+          required: true
