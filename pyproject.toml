@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "unknown-mystery-ai"
-version = "0.1.0"
+version = "0.2.0"
 description = "Open-source companion utilities for The Unknown Mystery of the AI by Ram Sandesh"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -20,10 +20,12 @@ keywords = [
   "rag",
   "agents",
   "mlops",
-  "responsible-ai"
+  "responsible-ai",
+  "ai-education"
 ]
 classifiers = [
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
   "License :: OSI Approved :: Apache Software License",
   "Operating System :: OS Independent"
 ]
@@ -31,6 +33,7 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/sanskarIN/unknown-mystery-ai"
 Repository = "https://github.com/sanskarIN/unknown-mystery-ai"
+Documentation = "https://github.com/sanskarIN/unknown-mystery-ai/tree/main/docs"
 Store = "https://ramsandesh.gumroad.com"
 
 [tool.setuptools]
