@@ -8,6 +8,29 @@ All notable changes to the open-source companion repository are documented here.
 
 Future 1.x work should remain backward-compatible with the documented stable public API unless a security or material correctness issue requires otherwise.
 
+### Added
+
+- Stable `v1.0.0` wheel, source distribution, and `SHA256SUMS.txt` GitHub release assets built from the immutable stable tag
+- Release-asset provenance workflow that rebuilds only from `v1.0.0`
+- Full-SHA GitHub Action pin validation
+- Public-repository commercial-publication boundary validation
+- Canonical Gumroad/repository/contact link validation for key project files
+- Built distribution content validation
+- PEP 561 `py.typed` marker and distribution packaging support
+- `python -m umai` module entry point
+- Explicit source-distribution manifest
+- Branch protection, commit/tag signing, repository settings, installation, Actions security, dependency review, typing, release asset, testing, privacy, security, supply-chain, accessibility, and maintenance guides
+- Documentation and question issue templates
+- Repository text-normalization rules through `.gitattributes`
+
+### Changed
+
+- Upgraded `actions/checkout` to v7.0.1, `actions/setup-python` to v7.0.0, and `actions/upload-artifact` to v7.0.1
+- Pinned external workflow Actions to verified full commit SHAs
+- Expanded Quality and Release Candidate workflows with supply-chain, commercial-publication boundary, canonical-link, API, distribution, test, example, build, and checksum checks
+- Expanded README navigation, release asset guidance, security documentation, and publication boundary information
+- Focused Dependabot on GitHub Actions because the stable companion has no third-party runtime dependencies
+
 ## [1.0.0] - 2026-08-17
 
 ### Stable milestone
