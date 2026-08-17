@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Data/model artifacts generated locally
+artifacts/
+checkpoints/
+models/
+*.onnx
+*.pt
+*.pth
+*.ckpt
+
+# Book commercial source files are intentionally not tracked
+*.pdf
+*.docx
+
+# Keep repository graphics
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.svg
