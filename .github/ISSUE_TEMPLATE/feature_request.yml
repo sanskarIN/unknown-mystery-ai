@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest an improvement to the open-source AI companion repository
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for improving the companion project.
+        Official book store: https://ramsandesh.gumroad.com
+  - type: textarea
+    id: problem
+    attributes:
+      label: Learning or engineering problem
+      description: What problem would this feature solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the smallest useful implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How should it be tested?
+      description: Describe examples, tests, or acceptance criteria.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: This request is for the open-source companion repo, not redistribution of the paid book.
+          required: true
