@@ -10,6 +10,7 @@ from collections.abc import Sequence
 
 from . import __version__
 from .links import GITHUB_REPOSITORY, GUMROAD_STORE
+from .reporting import to_json
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -24,8 +25,18 @@ def build_parser() -> argparse.ArgumentParser:
     subparsers.add_parser("repository", help="print the GitHub repository URL")
 
     info = subparsers.add_parser("info", help="print version and official project links")
-    info.add_argument("--compact", action="store_true", help="print one-line output")
+    output = info.add_mutually_exclusive_group()
+    output.add_argument("--compact", action="store_true", help="print one-line output")
+    output.add_argument("--json", action="store_true", help="print structured JSON")
     return parser
+
+
+def project_info() -> dict[str, str]:
+    return {
+        "version": __version__,
+        "repository": GITHUB_REPOSITORY,
+        "store": GUMROAD_STORE,
+    }
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -42,12 +53,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(GITHUB_REPOSITORY)
         return 0
     if args.command == "info":
+        info = project_info()
         if args.compact:
-            print(f"UMAI {__version__} | {GITHUB_REPOSITORY} | {GUMROAD_STORE}")
+            print(f"UMAI {info['version']} | {info['repository']} | {info['store']}")
+        elif args.json:
+            print(to_json(info))
         else:
-            print(f"version: {__version__}")
-            print(f"repository: {GITHUB_REPOSITORY}")
-            print(f"store: {GUMROAD_STORE}")
+            print(f"version: {info['version']}")
+            print(f"repository: {info['repository']}")
+            print(f"store: {info['store']}")
         return 0
 
     parser.print_help()
