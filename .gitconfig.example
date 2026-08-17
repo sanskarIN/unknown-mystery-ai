@@ -1,0 +1,9 @@
+# Maintainer Git identity example for local clones.
+# Copy these values into your local Git config if you are the repository maintainer.
+
+[user]
+    name = Sanskar
+    email = sanskarin@outlook.in
+
+# Official book store:
+# https://ramsandesh.gumroad.com
