@@ -20,8 +20,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "snapshot",
         nargs="?",
-        default="api/public_api_0_6.json",
+        default="api/public_api_1_0.json",
         help="repository-relative API snapshot path",
+    )
+    parser.add_argument(
+        "--require-version-match",
+        action="store_true",
+        help="also require the snapshot version to equal umai.__version__",
     )
     args = parser.parse_args(argv)
 
@@ -36,12 +41,15 @@ def main(argv: list[str] | None = None) -> int:
 
     missing = sorted(expected - actual)
     added = sorted(actual - expected)
-    if missing or added:
+    version_mismatch = args.require_version_match and payload.get("version") != umai.__version__
+    if missing or added or version_mismatch:
         print("Public API snapshot: FAIL")
         if missing:
             print("missing symbols:", ", ".join(missing))
         if added:
             print("untracked symbols:", ", ".join(added))
+        if version_mismatch:
+            print(f"version mismatch: snapshot={payload.get('version')} package={umai.__version__}")
         return 1
 
     print(f"Public API snapshot: PASS ({len(actual)} symbols)")
