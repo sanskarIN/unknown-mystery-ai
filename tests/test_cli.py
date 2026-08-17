@@ -1,5 +1,6 @@
 import contextlib
 import io
+import json
 import unittest
 
 from umai.cli import main
@@ -27,6 +28,13 @@ class CliTests(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn("github.com/sanskarIN/unknown-mystery-ai", output)
         self.assertIn("ramsandesh.gumroad.com", output)
+
+    def test_json_info(self) -> None:
+        code, output = self.capture(["info", "--json"])
+        self.assertEqual(code, 0)
+        payload = json.loads(output)
+        self.assertEqual(payload["store"], "https://ramsandesh.gumroad.com")
+        self.assertIn("unknown-mystery-ai", payload["repository"])
 
 
 if __name__ == "__main__":
