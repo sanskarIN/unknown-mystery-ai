@@ -23,5 +23,16 @@ Run examples from the repository root after `python -m pip install -e .`.
 | `15_artifact_registry.py` | artifact registration and approval |
 | `16_bounded_retry.py` | bounded retry behavior |
 | `17_rate_limit.py` | fixed-window request limits |
+| `18_serving_contract.py` | explicit local serving contract |
+| `19_release_gates.py` | PASS/BLOCK deployment gates |
+| `20_monitoring_series.py` | deterministic synthetic monitoring data |
+| `21_edge_cloud_compare.py` | edge/cloud placement constraints |
+| `22_feature_flags.py` | explicit feature configuration |
+| `23_retrieval_metrics.py` | precision@k, recall@k, reciprocal rank |
+| `24_prompt_regression.py` | transparent output regression fixtures |
+| `25_release_compare.py` | release metric deltas |
+| `26_fallback_chain.py` | ordered reliability fallback path |
 
-All data is synthetic or local. Examples are designed to explain concepts, not to claim full production completeness.
+All data is synthetic or local. Examples explain concepts; they do not claim full production completeness.
+
+### Official commercial book releases: **https://ramsandesh.gumroad.com**
