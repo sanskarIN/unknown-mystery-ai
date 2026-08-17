@@ -5,10 +5,12 @@ Official book store: https://ramsandesh.gumroad.com
 
 from .budget import TokenPricing, estimate_token_cost, requests_within_budget
 from .cache import BoundedCache
+from .compare import MetricDelta, ReleaseComparison, compare_metrics
 from .config import FeatureFlags, parse_bool
 from .drift import mean_shift, standardized_mean_shift
 from .evaluation import accuracy_score, classification_report
 from .experiments import ExperimentRecord, best_record
+from .fallback import FallbackResult, run_fallback_chain
 from .gates import GateResult, ReleaseDecision, evaluate_release_gates
 from .links import GITHUB_REPOSITORY, GUMROAD_STORE
 from .monitoring import MetricPoint, synthetic_metric_series
@@ -16,8 +18,10 @@ from .observability import MetricEvent, mean_metric
 from .placement import PlacementOption, eligible_placements
 from .privacy import pseudonymous_id, redact_common_identifiers
 from .prompts import PromptTemplate
+from .ranking import precision_at_k, recall_at_k, reciprocal_rank
 from .rate_limit import FixedWindowRateLimiter
 from .registry import ArtifactRegistry, ArtifactVersion
+from .regression import RegressionCase, RegressionResult, evaluate_output
 from .release import ReleaseManifest
 from .reproducibility import fingerprint_json, seed_everything
 from .retrieval import Document, SimpleRetriever
@@ -34,11 +38,14 @@ __all__ = [
     "BoundedCache",
     "chunk_text",
     "classification_report",
+    "compare_metrics",
     "Document",
     "eligible_placements",
     "estimate_token_cost",
+    "evaluate_output",
     "evaluate_release_gates",
     "ExperimentRecord",
+    "FallbackResult",
     "FeatureFlags",
     "fingerprint_json",
     "FixedWindowRateLimiter",
@@ -50,18 +57,26 @@ __all__ = [
     "LocalEndpoint",
     "mean_metric",
     "mean_shift",
+    "MetricDelta",
     "MetricEvent",
     "MetricPoint",
     "normalize_whitespace",
     "parse_bool",
     "PlacementOption",
+    "precision_at_k",
     "PromptTemplate",
     "pseudonymous_id",
+    "recall_at_k",
+    "reciprocal_rank",
     "redact_common_identifiers",
+    "RegressionCase",
+    "RegressionResult",
+    "ReleaseComparison",
     "ReleaseDecision",
     "ReleaseManifest",
     "requests_within_budget",
     "retry_call",
+    "run_fallback_chain",
     "seed_everything",
     "SimpleRetriever",
     "standardized_mean_shift",
@@ -71,4 +86,4 @@ __all__ = [
     "validate_record",
 ]
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
