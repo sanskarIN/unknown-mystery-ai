@@ -8,10 +8,11 @@ All notable changes to the open-source companion repository are documented here.
 
 Future 1.x work should remain backward-compatible with the documented stable public API unless a security or material correctness issue requires otherwise.
 
+## [1.0.1] - 2026-08-17
+
 ### Added
 
-- Stable `v1.0.0` wheel, source distribution, and `SHA256SUMS.txt` GitHub release assets built from the immutable stable tag
-- Release-asset provenance workflow that rebuilds only from `v1.0.0`
+- Stable software release asset workflow that rebuilds from immutable tags rather than post-release `main`
 - Full-SHA GitHub Action pin validation
 - Public-repository commercial-publication boundary validation
 - Canonical Gumroad/repository/contact link validation for key project files
@@ -30,6 +31,7 @@ Future 1.x work should remain backward-compatible with the documented stable pub
 - Expanded Quality and Release Candidate workflows with supply-chain, commercial-publication boundary, canonical-link, API, distribution, test, example, build, and checksum checks
 - Expanded README navigation, release asset guidance, security documentation, and publication boundary information
 - Focused Dependabot on GitHub Actions because the stable companion has no third-party runtime dependencies
+- Preserved the documented 1.0 public API without incompatible changes
 
 ## [1.0.0] - 2026-08-17
 
