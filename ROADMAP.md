@@ -73,7 +73,7 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] Stable architecture and support guarantees
 - [x] 1.0 maintainer release checklist
 - [x] Package and citation metadata promoted to 1.0.0
-- [ ] `v1.0.0` Git tag and GitHub release — create only after final CI verification
+- [x] `v1.0.0` Git tag and GitHub release created after successful final Quality verification
 
 ## After 1.0
 
