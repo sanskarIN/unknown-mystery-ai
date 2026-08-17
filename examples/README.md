@@ -32,6 +32,9 @@ Run examples from the repository root after `python -m pip install -e .`.
 | `24_prompt_regression.py` | transparent output regression fixtures |
 | `25_release_compare.py` | release metric deltas |
 | `26_fallback_chain.py` | ordered reliability fallback path |
+| `27_deprecation_policy.py` | actionable deprecation warning |
+| `28_structured_reporting.py` | deterministic JSON evidence reporting |
+| `29_release_evidence.py` | structured release evidence bundle |
 
 All data is synthetic or local. Examples explain concepts; they do not claim full production completeness.
 
