@@ -2,7 +2,7 @@
 
 > 🛒 Official publication: **https://ramsandesh.gumroad.com**
 
-This is a compact reference for the dependency-light teaching utilities in `src/umai/`.
+This is the compact reference for the dependency-light public utilities exported by `umai`.
 
 ## Reproducibility
 
@@ -26,15 +26,16 @@ This is a compact reference for the dependency-light teaching utilities in `src/
 
 - `normalize_whitespace` / `chunk_text` — deterministic baseline text transforms.
 - `PromptTemplate` — versioned explicit prompt variables.
-- `RegressionCase` / `evaluate_output` — transparent output regression expectations.
+- `RegressionCase` / `RegressionResult` / `evaluate_output` — transparent output regression expectations.
 
 ## Experiments, releases, and governance
 
 - `ExperimentRecord` / `best_record` — compact experiment evidence and selection.
 - `ArtifactVersion` / `ArtifactRegistry` — version registration and approval demonstration.
 - `ReleaseManifest` — explicit release identity.
-- `compare_metrics` — metric deltas between two named releases.
-- `evaluate_release_gates` — transparent PASS/BLOCK release checks.
+- `compare_metrics` / `MetricDelta` / `ReleaseComparison` — metric deltas between named releases.
+- `evaluate_release_gates` / `GateResult` / `ReleaseDecision` — transparent PASS/BLOCK release checks.
+- `EvidenceBundle` — structured source/check/metric evidence with deterministic JSON export.
 
 ## Serving and placement
 
@@ -47,16 +48,37 @@ This is a compact reference for the dependency-light teaching utilities in `src/
 - `MetricEvent` / `mean_metric` — privacy-aware metric examples.
 - `MetricPoint` / `synthetic_metric_series` — deterministic synthetic dashboard data.
 - `mean_shift` / `standardized_mean_shift` — lightweight numeric drift indicators.
-- `validate_record` — minimal boundary schema validation.
+- `validate_record` / `ValidationIssue` — minimal boundary schema validation.
 
 ## Privacy and operations
 
 - `redact_common_identifiers` / `pseudonymous_id` — privacy teaching helpers.
-- `TokenPricing` / `estimate_token_cost` — caller-supplied cost estimation.
+- `TokenPricing` / `estimate_token_cost` / `requests_within_budget` — caller-supplied cost estimation.
 - `BoundedCache` — explicit LRU-style item bound.
 - `FixedWindowRateLimiter` — deterministic request admission by supplied window ID.
 - `retry_call` — bounded retries for explicitly retryable exceptions.
-- `run_fallback_chain` — declared ordered fallback path for recoverable failures.
+- `run_fallback_chain` / `FallbackResult` — declared ordered fallback path for recoverable failures.
+
+## Reporting and compatibility
+
+- `to_serializable(value)` — convert supported companion evidence values to JSON-compatible structures.
+- `to_json(value, indent=2)` — deterministic sorted JSON rendering.
+- `key_value_report(values)` — stable CLI-friendly text output.
+- `DeprecatedFeature` / `warn_deprecated` — actionable public API deprecation messaging.
+
+## Command line
+
+After installation, `umai-companion` exposes project metadata without network access:
+
+```bash
+umai-companion version
+umai-companion store
+umai-companion repository
+umai-companion info
+umai-companion info --json
+```
+
+See [`CLI.md`](CLI.md) and [`API_COMPATIBILITY.md`](API_COMPATIBILITY.md).
 
 These utilities are intentionally small. Production systems still need application-specific requirements, threat modeling, security, privacy review, capacity planning, monitoring, incident response, governance, and validation.
 
