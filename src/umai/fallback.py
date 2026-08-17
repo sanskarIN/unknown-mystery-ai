@@ -7,13 +7,13 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from dataclasses import dataclass
-from typing import TypeVar
+from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
 
 @dataclass(frozen=True)
-class FallbackResult:
+class FallbackResult(Generic[T]):
     provider: str
     value: T
     attempts: tuple[str, ...]
