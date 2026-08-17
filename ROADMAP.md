@@ -59,18 +59,20 @@ The companion repository grows through small, reviewable additions rather than c
 
 ## v0.6 — Stable API preparation
 
-- [ ] Formal public API compatibility policy
-- [ ] Deprecation helper and policy example
-- [ ] Structured JSON export for experiment/release evidence
-- [ ] More CLI-friendly reporting helpers
-- [ ] Stable release candidate checklist
+- [x] Formal public API compatibility policy
+- [x] Deprecation helper and policy example
+- [x] Structured JSON export for experiment/release evidence
+- [x] CLI-friendly project reporting
+- [x] Public API snapshot checker
+- [x] Stable release candidate checklist and workflow
 
 ## v1.0 — Mature companion release
 
-- [ ] Stable documented public API
+- [ ] Final stable public API snapshot
 - [ ] Versioned example contracts
-- [ ] Tagged stable companion release
-- [ ] Maintainer release checklist completed against the tag
+- [ ] Stable architecture and support guarantees
+- [ ] 1.0 maintainer release checklist
+- [ ] Tagged stable companion release after CI verification
 
 ## Complete book roadmap
 
