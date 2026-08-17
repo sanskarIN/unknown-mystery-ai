@@ -2,11 +2,15 @@
 
 > 🛒 Official commercial publication: **https://ramsandesh.gumroad.com**
 
-The GitHub **v1.0.0** software release can carry build artifacts for the Apache-2.0 companion package. It must not contain the paid eBook manuscript or separately copyrighted commercial publication assets.
+Stable GitHub software releases carry build artifacts for the Apache-2.0 companion package. They must not contain the paid eBook manuscript or separately copyrighted commercial publication assets.
 
-## Attached software artifacts
+## Current stable release
 
-The release-asset workflow builds directly from the immutable `v1.0.0` Git tag and uploads:
+The current maintenance release is **v1.0.1**.
+
+Release page: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.1**
+
+The release asset workflow builds directly from the immutable version tag and uploads:
 
 - the Python source distribution (`.tar.gz`),
 - the Python wheel (`.whl`),
@@ -14,7 +18,11 @@ The release-asset workflow builds directly from the immutable `v1.0.0` Git tag a
 
 ## Provenance rule
 
-Release assets are built from `v1.0.0`, not from later commits on `main`. This prevents post-release documentation or maintenance commits from silently changing the bytes associated with the historical stable tag.
+Release assets are built from the immutable release tag, not from later commits on `main`. This prevents post-release documentation or maintenance commits from silently changing the bytes associated with a historical stable version.
+
+The historical **v1.0.0** release remains available at:
+
+**https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.0**
 
 ## Checksums
 
@@ -22,7 +30,7 @@ SHA-256 checksums help detect byte changes. They are integrity evidence, not by 
 
 ## Commercial publication boundary
 
-Do **not** attach the complete eBook PDF/DOCX, paid chapter sources, cover package, certificate package, or other restricted commercial assets to the public GitHub software release.
+Do **not** attach the complete eBook PDF/DOCX, paid chapter sources, cover package, certificate package, or other restricted commercial assets to public GitHub software releases.
 
 Official book editions and commercial publication materials belong at:
 
