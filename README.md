@@ -68,6 +68,8 @@ make test
 make examples
 ```
 
+For stable release installation options, see [`docs/INSTALLATION.md`](docs/INSTALLATION.md).
+
 ## Runnable examples
 
 The numbered example suite covers reproducibility, evaluation, RAG, agents, release identity, observability, text chunking, prompt versioning, drift, budgeting, privacy, caches, validation, experiments, artifact approvals, retries, rate limiting, serving contracts, release gates, synthetic monitoring, edge/cloud placement, feature flags, ranking metrics, regression tests, release comparisons, fallback chains, deprecations, and structured release evidence.
@@ -103,9 +105,23 @@ Recommended starting points:
 - [`docs/API_COMPATIBILITY.md`](docs/API_COMPATIBILITY.md) — semantic-versioning and deprecation policy
 - [`docs/STABILITY.md`](docs/STABILITY.md) — 1.x stability guarantees
 - [`docs/CLI.md`](docs/CLI.md) — command-line usage
+- [`docs/INSTALLATION.md`](docs/INSTALLATION.md) — clone and stable-release installation
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — design principles and trust boundaries
 - [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) — local development workflow
+- [`docs/TESTING_STRATEGY.md`](docs/TESTING_STRATEGY.md) — automated validation layers
+- [`docs/SECURITY_MODEL.md`](docs/SECURITY_MODEL.md) — trust boundaries and safe defaults
+- [`docs/PRIVACY_MODEL.md`](docs/PRIVACY_MODEL.md) — privacy and telemetry model
+- [`docs/SUPPLY_CHAIN.md`](docs/SUPPLY_CHAIN.md) — software supply-chain controls
+- [`docs/GITHUB_ACTIONS_SECURITY.md`](docs/GITHUB_ACTIONS_SECURITY.md) — full-SHA action pinning policy
+- [`docs/DEPENDENCIES.md`](docs/DEPENDENCIES.md) — minimal dependency policy
+- [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md) — accessible documentation/output guidance
 - [`docs/EXAMPLE_CONTRACTS.md`](docs/EXAMPLE_CONTRACTS.md) — numbered example compatibility rules
+- [`docs/BRANCH_PROTECTION.md`](docs/BRANCH_PROTECTION.md) — recommended `main` protection settings
+- [`docs/SIGNING.md`](docs/SIGNING.md) — prospective commit/tag signing guidance
+- [`docs/REPOSITORY_SETTINGS.md`](docs/REPOSITORY_SETTINGS.md) — recommended GitHub settings and topics
+- [`docs/RELEASE_ASSETS.md`](docs/RELEASE_ASSETS.md) — wheel/source/checksum release provenance
+- [`docs/RELEASE_STATUS.md`](docs/RELEASE_STATUS.md) — stable release identity
+- [`docs/MAINTENANCE.md`](docs/MAINTENANCE.md) — post-1.0 maintenance policy
 - [`docs/RELEASE_1_0_CHECKLIST.md`](docs/RELEASE_1_0_CHECKLIST.md) — stable release verification
 - [`docs/COMPANION_RELEASE_1.0.md`](docs/COMPANION_RELEASE_1.0.md) — stable release notes
 - [`docs/GUMROAD.md`](docs/GUMROAD.md) — official commercial publication destination
@@ -117,11 +133,20 @@ The repository includes automated checks for:
 - supported Python tests,
 - cross-platform numbered example smoke runs,
 - package metadata/version consistency,
+- full-commit-SHA GitHub Action pins,
+- public-repository commercial manuscript boundaries,
+- canonical Gumroad/repository/contact links in key files,
 - internal Markdown links,
 - public API snapshot consistency,
 - wheel/source builds,
 - SHA-256 build manifests,
 - release-candidate build evidence.
+
+## Stable GitHub release
+
+The `v1.0.0` GitHub software release includes the companion wheel, source distribution, and `SHA256SUMS.txt`, built from the immutable stable tag. These are software companion artifacts only; the paid eBook and commercial artwork remain outside the public GitHub release.
+
+Release page: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.0**
 
 ## Book vs. code licensing
 
