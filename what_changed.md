@@ -4,6 +4,46 @@
 
 This file records repository work that would otherwise require a long chat summary.
 
+## 2026-08-18 — Project catalog, CI queue hardening, and 1.1.0 release preparation
+
+### Machine-readable project catalog
+
+- Added `projects/catalog.json` for all 25 runnable projects.
+- Catalog records project ID, human title, category, learning level, entry point, and capstone snapshot status.
+- Added `scripts/check_project_catalog.py` to validate catalog schema, unique IDs, allowed categories/levels, entry points, README presence, snapshot declarations, canonical Gumroad links, and parity with discovered project directories.
+- Added `tests/test_project_catalog.py` for independent catalog invariants.
+- Added `docs/PROJECT_CATALOG.md` describing the catalog contract.
+- Added `make project-catalog`.
+
+### GitHub Actions queue hardening
+
+- Added workflow concurrency groups with `cancel-in-progress: true` to high-frequency CI/PR workflows.
+- Added job timeout limits so a stalled run cannot consume a runner indefinitely.
+- Hardened:
+  - `CI`
+  - `Quality`
+  - `Project Matrix`
+  - `Documentation Links`
+  - `Example Smoke Tests`
+  - `Release Check`
+- Left stable tag/release-asset workflows outside this automatic cancellation policy so publishing jobs are not casually interrupted.
+
+### 1.1.0 release candidate
+
+- Promoted package, package `__version__`, stable API snapshot version, citation metadata, README badge, and changelog to **1.1.0** in one coordinated release metadata commit.
+- Added `docs/COMPANION_RELEASE_1.1.0.md`.
+- Added `docs/RELEASE_1_1_0_CHECKLIST.md`.
+- Added `docs/VERSIONING_1_1_0.md`.
+- Added `scripts/check_release_candidate.py` and `make release-check`.
+- Updated `docs/RELEASE_STATUS.md` to keep **v1.0.1** as the currently published stable release until 1.1.0 is fully verified and tagged.
+- Created release-candidate branch `release/1.1.0-rc`.
+- Opened PR #6 specifically to run the complete pull-request verification stack before tagging.
+- Opened Issue #5 to track release verification, tag, release notes, and software release assets.
+
+### Release verification policy
+
+The 1.1.0 release is not considered published stable until CI, Quality, and Project Matrix checks succeed on the intended release candidate. Paid eBook/manuscript/publication assets remain excluded from the Apache-2.0 software release.
+
 ## 2026-08-18 — Integrated capstones and project verification
 
 ### Five new integrated capstone projects
