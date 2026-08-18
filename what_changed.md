@@ -4,6 +4,74 @@
 
 This file records repository work that would otherwise require a long chat summary.
 
+## 2026-08-18 — Integrated capstones and project verification
+
+### Five new integrated capstone projects
+
+21. `projects/ai_release_readiness_console/`
+   - structured input validation
+   - privacy-aware contact handling
+   - classification evaluation
+   - explicit release gates
+   - machine-readable evidence bundle
+
+22. `projects/rag_evaluation_capstone/`
+   - local lexical retrieval
+   - explicit relevance judgments
+   - precision@k, recall@k, and reciprocal rank
+   - output-regression evidence
+
+23. `projects/mlops_release_pipeline/`
+   - artifact registration and approval
+   - baseline/candidate metric comparison
+   - PASS/BLOCK release gates
+   - deterministic release manifest
+   - structured release evidence
+
+24. `projects/responsible_ai_review_board/`
+   - intended-use and oversight documentation
+   - structured review validation
+   - privacy-aware display
+   - governance review gates
+   - explicit educational/legal boundary
+
+25. `projects/production_resilience_lab/`
+   - recoverable provider fallback
+   - bounded local cache
+   - local serving request/response identity
+   - edge/cloud placement constraints
+   - caller-supplied cost assumptions
+
+### Snapshot fixtures and tests
+
+- Added `expected.json` subset fixtures for all five new capstones.
+- Added `scripts/check_project_snapshots.py`.
+- Snapshot validation checks durable project facts without freezing incidental output fields.
+- Expanded `scripts/check_projects.py` from twenty to twenty-five required projects.
+- Every project must still execute successfully and emit valid JSON.
+
+### Cross-platform automation
+
+- Added `.github/workflows/projects.yml`.
+- Project validation now runs on Linux, Windows, and macOS.
+- The matrix uses multiple supported Python versions.
+- The main Quality workflow also runs capstone snapshot validation.
+- Added `make project-snapshots` alongside `make projects`.
+
+### Documentation
+
+- Expanded `projects/README.md` to twenty-five projects and a dedicated capstone section.
+- Expanded `docs/PROJECTS.md` with a five-stage learning path and snapshot-contract explanation.
+- Expanded the root `README.md` with the Project Matrix badge, capstones, verification commands, and durable social-link policy navigation.
+- Updated `CHANGELOG.md` under Unreleased.
+
+### Compatibility and safety
+
+- No incompatible change was made to the stable `umai` 1.x public API.
+- New capstones compose existing stable helpers rather than widening the public symbol surface.
+- Projects remain local/synthetic by default and require no provider credentials or network calls.
+- Paid manuscript and commercial publishing assets remain outside the Apache-2.0 repository.
+
 ## 2026-08-18 — Stable social link policy
 
 - Searched the repository for `x.com` and `twitter.com` profile links; no durable X/Twitter profile link was present.
@@ -150,4 +218,4 @@ Project source, project documentation, automation, indexes, and repository docum
 
 ### Next repository work
 
-Continue with project-specific tests/fixtures where useful, cross-platform project smoke validation, additional integrated capstone projects, and backward-compatible 1.x maintenance. Repository administration settings tracked separately still require GitHub/account configuration rather than normal commits.
+Continue with project-specific unit tests where they add value, additional integrated portfolio capstones, stronger workflow evidence, and backward-compatible 1.x maintenance. Repository administration settings tracked separately still require GitHub/account configuration rather than normal commits.
