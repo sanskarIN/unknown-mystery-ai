@@ -36,6 +36,14 @@ This directory contains complete, dependency-light projects that build on the pu
 19. [`privacy_audit_workbench`](privacy_audit_workbench/) — schema validation, redaction, and pseudonymous IDs.
 20. [`cost_budget_planner`](cost_budget_planner/) — caller-supplied token pricing and request-budget planning.
 
+## Integrated capstones
+
+21. [`ai_release_readiness_console`](ai_release_readiness_console/) — validation, privacy, evaluation, gates, and release evidence in one workflow.
+22. [`rag_evaluation_capstone`](rag_evaluation_capstone/) — retrieval, ranking metrics, and output-regression evidence.
+23. [`mlops_release_pipeline`](mlops_release_pipeline/) — artifact approval, metric comparison, release gates, manifest, and evidence bundle.
+24. [`responsible_ai_review_board`](responsible_ai_review_board/) — intended-use documentation, validation, privacy-aware display, and governance review gates.
+25. [`production_resilience_lab`](production_resilience_lab/) — fallback, cache, serving, placement, and cost assumptions in one operations exercise.
+
 ## Run projects
 
 From the repository root:
@@ -44,15 +52,24 @@ From the repository root:
 python -m pip install -e .
 python projects/rag_knowledge_explorer/main.py
 python scripts/check_projects.py
+python scripts/check_project_snapshots.py
 ```
 
 On compatible systems:
 
 ```bash
 make projects
+make project-snapshots
 ```
 
-Each project has its own README with goals, commands, extension ideas, and safety/production-boundary notes.
+Each project has its own README with goals, commands, extension ideas, and safety/production-boundary notes. The integrated capstones also include `expected.json` subset snapshots for stable, cross-platform output validation.
+
+## Automated verification
+
+- `scripts/check_projects.py` requires the complete project inventory and validates that every default run exits successfully and emits valid JSON.
+- `scripts/check_project_snapshots.py` validates selected stable fields for capstone projects without freezing incidental output details.
+- `.github/workflows/projects.yml` runs the project and snapshot checks on Linux, Windows, and macOS using multiple supported Python versions.
+- The main Quality workflow repeats project and snapshot checks before build evidence is accepted.
 
 ## Design rules
 
