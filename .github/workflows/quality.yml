@@ -48,6 +48,8 @@ jobs:
             echo "==> $file"
             python "$file"
           done
+      - name: Validate project catalog
+        run: python scripts/check_project_catalog.py
       - name: Smoke-test companion projects
         run: python scripts/check_projects.py
       - name: Validate capstone project snapshots
