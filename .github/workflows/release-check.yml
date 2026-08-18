@@ -7,6 +7,7 @@ on:
       - "src/**"
       - "tests/**"
       - "projects/**"
+      - "scripts/check_release_automation.py"
       - "scripts/check_release_candidate.py"
       - "scripts/check_repository_completeness.py"
       - "scripts/check_project*.py"
@@ -51,6 +52,9 @@ jobs:
 
       - name: Validate pinned workflow actions
         run: python scripts/check_workflow_pins.py
+
+      - name: Validate stable release automation
+        run: python scripts/check_release_automation.py
 
       - name: Validate release candidate invariants
         run: python scripts/check_release_candidate.py
