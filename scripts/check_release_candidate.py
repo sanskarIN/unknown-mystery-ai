@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_VERSION = "1.1.0"
 EXPECTED_PROJECTS = 25
 EXPECTED_CAPSTONE_FIXTURES = 5
+EXPECTED_STORE = "https://ramsandesh.gumroad.com"
 
 
 def fail(message: str, failures: list[str]) -> None:
@@ -55,8 +56,28 @@ def main() -> int:
         fail("missing 1.1.0 release checklist", failures)
 
     project_mains = sorted((ROOT / "projects").glob("*/main.py"))
+    discovered_ids = {path.parent.name for path in project_mains}
     if len(project_mains) != EXPECTED_PROJECTS:
         fail(f"expected {EXPECTED_PROJECTS} project entry points, found {len(project_mains)}", failures)
+
+    catalog_path = ROOT / "projects" / "catalog.json"
+    if not catalog_path.is_file():
+        fail("missing projects/catalog.json", failures)
+        catalog_ids: set[str] = set()
+    else:
+        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+        if catalog.get("schema_version") != 1:
+            fail("project catalog schema_version must be 1", failures)
+        if catalog.get("official_store") != EXPECTED_STORE:
+            fail("project catalog official store is not canonical", failures)
+        catalog_projects = catalog.get("projects", [])
+        catalog_ids = {
+            item.get("id") for item in catalog_projects if isinstance(item, dict) and isinstance(item.get("id"), str)
+        }
+        if len(catalog_projects) != EXPECTED_PROJECTS:
+            fail(f"project catalog must contain {EXPECTED_PROJECTS} records", failures)
+        if catalog_ids != discovered_ids:
+            fail("project catalog IDs do not match discovered runnable project IDs", failures)
 
     fixtures = sorted((ROOT / "projects").glob("*/expected.json"))
     if len(fixtures) != EXPECTED_CAPSTONE_FIXTURES:
@@ -78,10 +99,11 @@ def main() -> int:
     print("1.1.0 release candidate: PASS")
     print(f"- version: {EXPECTED_VERSION}")
     print(f"- projects: {EXPECTED_PROJECTS}")
+    print(f"- catalog IDs: {len(catalog_ids)}")
     print(f"- capstone fixtures: {EXPECTED_CAPSTONE_FIXTURES}")
     print("- public API: stable 1.x snapshot aligned")
     print("- workflows: CI, Quality, Project Matrix present")
-    print("- official store: https://ramsandesh.gumroad.com")
+    print(f"- official store: {EXPECTED_STORE}")
     return 0
 
 
