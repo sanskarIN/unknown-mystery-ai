@@ -1,11 +1,9 @@
 name: Attach Stable Release Assets
 
 on:
+  release:
+    types: [published]
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/release-assets.yml"
 
 permissions:
   contents: write
@@ -13,18 +11,34 @@ permissions:
 jobs:
   assets:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
-      - name: Check out immutable v1.0.1 source
+      - name: Resolve release tag
+        id: release
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TAG="${{ github.event.release.tag_name }}"
+          else
+            TAG="$(gh release view --json tagName --jq .tagName)"
+          fi
+          test -n "$TAG"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Check out immutable release source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: v1.0.1
+          ref: ${{ steps.release.outputs.tag }}
           fetch-depth: 0
 
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
 
-      - name: Verify tag version
+      - name: Verify tag and package version
+        id: version
         shell: bash
         run: |
           VERSION="$(python - <<'PY'
@@ -33,7 +47,22 @@ jobs:
           print(tomllib.loads(Path('pyproject.toml').read_text(encoding='utf-8'))['project']['version'])
           PY
           )"
-          test "$VERSION" = "1.0.1"
+          TAG="${{ steps.release.outputs.tag }}"
+          test "$TAG" = "v$VERSION"
+          test -f "docs/COMPANION_RELEASE_${VERSION}.md"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Validate release source
+        run: |
+          python scripts/check_repository_completeness.py
+          python scripts/check_package_metadata.py
+          python scripts/check_release_documentation.py
+          python scripts/check_public_repository_boundary.py
+          python scripts/check_public_api.py --require-version-match
+          python scripts/check_project_catalog.py
+          python -m unittest discover -s tests -v
+          python scripts/check_projects.py
+          python scripts/check_project_snapshots.py
 
       - name: Build source and wheel distributions
         run: |
@@ -51,11 +80,12 @@ jobs:
       - name: Upload stable release assets
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.release.outputs.tag }}
         shell: bash
         run: |
-          gh release view v1.0.1
-          gh release upload v1.0.1 dist/* --clobber
+          gh release view "$TAG"
+          gh release upload "$TAG" dist/* --clobber
 
-# Release software is built from the immutable v1.0.1 tag, not post-release main.
-# The paid eBook/commercial assets are intentionally excluded.
+# Release software is built from the immutable published tag, never post-release main.
+# Paid eBook/commercial assets are intentionally excluded.
 # Official publication: https://ramsandesh.gumroad.com
