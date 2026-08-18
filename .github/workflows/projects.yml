@@ -13,6 +13,9 @@ on:
       - "scripts/check_release_candidate.py"
       - "pyproject.toml"
       - ".github/workflows/projects.yml"
+      - ".github/workflows/publish-stable.yml"
+      - ".github/workflows/release-assets.yml"
+      - ".github/workflows/release-check.yml"
   pull_request:
     paths:
       - "projects/**"
@@ -23,6 +26,11 @@ on:
       - "scripts/check_release_candidate.py"
       - "pyproject.toml"
       - ".github/workflows/projects.yml"
+      - ".github/workflows/publish-stable.yml"
+      - ".github/workflows/release-assets.yml"
+      - ".github/workflows/release-check.yml"
+      - "docs/COMPANION_RELEASE_1.1.0.md"
+      - "docs/RELEASE_1_1_0_CHECKLIST.md"
       - "docs/RC_1_1_0_VERIFICATION.md"
 
 permissions:
