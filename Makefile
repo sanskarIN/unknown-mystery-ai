@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-.PHONY: install test examples build clean
+.PHONY: install test examples projects build clean
 
 install:
 	$(PYTHON) -m pip install -e .
@@ -13,6 +13,9 @@ examples:
 		echo "==> $$file"; \
 		$(PYTHON) $$file || exit 1; \
 	done
+
+projects:
+	$(PYTHON) scripts/check_projects.py
 
 build:
 	$(PYTHON) -m build
