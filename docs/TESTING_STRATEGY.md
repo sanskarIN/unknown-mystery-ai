@@ -2,7 +2,7 @@
 
 > 🛒 Official book store: **https://ramsandesh.gumroad.com**
 
-The companion uses layered validation for dependency-light utilities, runnable projects, documentation, packaging, and release evidence. No single check is treated as a universal proof of production fitness.
+The companion uses layered validation for dependency-light utilities, runnable projects, documentation, packaging, release automation, and release evidence. No single check is treated as a universal proof of production fitness.
 
 ## 1. Repository completeness
 
@@ -11,6 +11,7 @@ The companion uses layered validation for dependency-light utilities, runnable p
 - expected top-level governance/build files,
 - complete documentation baseline,
 - required CI/release workflows,
+- required quality/release scripts,
 - 25-record machine-readable project catalog,
 - documentation-index discoverability,
 - canonical Gumroad link in key durable files.
@@ -81,12 +82,14 @@ Subset snapshots avoid converting incidental display details into permanent comp
 
 ## 8. Cross-platform Project Matrix
 
-`.github/workflows/projects.yml` validates the project catalog, all project runs, and capstone snapshots across:
+`.github/workflows/projects.yml` validates repository completeness, the project catalog, all project runs, and capstone snapshots across:
 
 - Linux,
 - Windows,
 - macOS,
 - multiple supported Python versions.
+
+The matrix is also triggered by stable-release automation changes so a final release candidate does not bypass cross-platform project evidence merely because the last code change was in a release workflow.
 
 See [`COMPATIBILITY_MATRIX.md`](COMPATIBILITY_MATRIX.md).
 
@@ -101,20 +104,42 @@ Automated checks validate:
 - full-SHA GitHub Actions pins,
 - release-documentation/version consistency.
 
-## 10. Package and build checks
+## 10. Stable release automation contract
+
+`scripts/check_release_automation.py` validates the durable publication workflow contract. It verifies that:
+
+- stable publication is chained from successful Quality completion on `main`,
+- the exact current `main` SHA must match the verified Quality SHA,
+- CI, Quality, Project Matrix, Documentation Links, and Release Check are required for the same commit,
+- the version/tag is derived from package metadata,
+- versioned release notes/checklists are required,
+- release assets are chained from stable-publication completion,
+- assets are rebuilt from the immutable published tag,
+- historical version-specific tags are not hard-coded back into the current release workflows.
+
+Run:
+
+```bash
+python scripts/check_release_automation.py
+```
+
+This is a structural contract check. The actual GitHub workflow run remains the authoritative evidence that the automation executed successfully.
+
+## 11. Package and build checks
 
 The Quality workflow:
 
-1. installs the package,
-2. runs tests/examples/projects,
-3. builds wheel and source distributions,
-4. verifies distribution contents,
-5. generates SHA-256 checksum evidence,
-6. uploads build evidence for inspection.
+1. validates repository/release automation structure,
+2. installs the package,
+3. runs tests/examples/projects,
+4. builds wheel and source distributions,
+5. verifies distribution contents,
+6. generates SHA-256 checksum evidence,
+7. uploads build evidence for inspection.
 
 The distribution checker verifies that required package content such as `py.typed` is actually present in built artifacts.
 
-## 11. Release-candidate invariants
+## 12. Release-candidate invariants
 
 For the 1.1.0 candidate:
 
@@ -124,13 +149,32 @@ python scripts/check_release_candidate.py
 
 This validates coordinated version metadata, public API snapshot version, release files, project count, capstone fixtures, and required workflows.
 
-## 12. Recommended full local sequence
+## 13. Exact-commit publication evidence
+
+The stable publication workflow runs only after a successful Quality run on `main`. It then waits for successful exact-SHA evidence for:
+
+- CI,
+- Quality,
+- Project Matrix,
+- Documentation Links,
+- Release Check.
+
+A missing or still-running workflow keeps publication pending; a failed required workflow blocks publication.
+
+## 14. Immutable release-asset validation
+
+After stable publication, the asset workflow checks out the immutable tag and reruns repository, package, API, project, snapshot, and boundary checks before creating and uploading wheel/source/checksum assets.
+
+This separates pre-release evidence from post-tag artifact provenance.
+
+## 15. Recommended full local sequence
 
 ```bash
 python scripts/check_repository_completeness.py
 python scripts/check_package_metadata.py
 python scripts/check_release_documentation.py
 python scripts/check_workflow_pins.py
+python scripts/check_release_automation.py
 python scripts/check_public_repository_boundary.py
 python scripts/check_project_links.py
 python scripts/check_unstable_social_links.py
@@ -147,16 +191,18 @@ On compatible systems:
 
 ```bash
 make repository-check
+make release-automation
 make test
 make project-catalog
 make projects
 make project-snapshots
 make release-check
+make verify
 ```
 
 ## Failure policy
 
-Do not weaken or delete a quality check merely because it detects a real mismatch. Determine whether the source, documentation, metadata, fixture, or check is wrong, fix the underlying issue, and add regression evidence when useful.
+Do not weaken or delete a quality check merely because it detects a real mismatch. Determine whether the source, documentation, metadata, fixture, workflow, or check is wrong, fix the underlying issue, and add regression evidence when useful.
 
 ## What automation cannot prove
 
