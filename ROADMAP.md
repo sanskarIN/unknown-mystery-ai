@@ -101,7 +101,7 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] Expanded project/testing documentation
 - [x] Durable social-link policy for long-lived repository/publication assets
 - [x] 1.1.0 release notes and verification checklist prepared
-- [ ] Promote package/citation/API snapshot/readme/changelog metadata to 1.1.0
+- [x] Package/citation/API snapshot/README/changelog metadata promoted to 1.1.0
 - [ ] Verify Quality, CI, and Project Matrix on the exact release commit
 - [ ] Create immutable `v1.1.0` tag and GitHub release
 - [ ] Attach verified software wheel/source/checksum assets from the immutable tag
