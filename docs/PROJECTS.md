@@ -1,45 +1,66 @@
-# Companion Project Ideas
+# Companion Projects Guide
 
 > 🛒 **Official Gumroad store:** **https://ramsandesh.gumroad.com**
 
-These projects are designed to be small enough to finish, yet structured enough to produce portfolio evidence.
+The repository now includes ten complete, runnable companion projects under [`projects/`](../projects/). They use the stable `umai` package, local or synthetic data by default, and no provider credentials.
 
-## 1. Evaluation Workbench
+## Suggested learning order
 
-Create a command-line tool that loads predictions, computes metrics, writes a JSON report, and records a release fingerprint.
+### Foundation
 
-**Evidence to include:** test cases, sample report, limitations, and reproducibility notes.
+1. **Evaluation Report Studio** — understand expected/predicted labels and per-class metrics.
+2. **Experiment Leaderboard** — record reproducible parameters, fingerprints, and competing objectives.
+3. **RAG Knowledge Explorer** — inspect lexical retrieval, scores, and source metadata.
 
-## 2. Local RAG Notebook or CLI
+### Reliability and governance
 
-Index a small authorized document set, retrieve evidence for a query, and display the retrieved passages before any generated answer.
+4. **Prompt Regression Lab** — make output expectations explicit and repeatable.
+5. **Release Gate Simulator** — convert reviewed evidence into transparent PASS/BLOCK gates.
+6. **Privacy Audit Workbench** — practice validation, redaction, and pseudonymous identifiers.
 
-**Evidence to include:** retrieval examples, failure cases, ranking comparison, and privacy notes.
+### Deployment and operations
 
-## 3. Tool-Routing Assistant
+7. **Edge Cloud Planner** — filter architecture choices using declared constraints.
+8. **Cost Budget Planner** — estimate capacity from caller-supplied pricing assumptions.
+9. **Model Monitoring Lab** — compare deterministic synthetic reference/current telemetry.
+10. **Agent Router Sandbox** — inspect allowlisted tool registration and deterministic routing.
 
-Build a deterministic assistant that can invoke a small allowlist of harmless local tools such as arithmetic, text formatting, or structured lookup.
+## Verification
 
-**Evidence to include:** routing tests, rejected unknown tools, and an execution log.
+Install the package and run every project:
 
-## 4. Release Manifest Generator
+```bash
+python -m pip install -e .
+python scripts/check_projects.py
+```
 
-Create a utility that captures model ID, data ID, code revision, metrics, and environment metadata into a versioned JSON artifact.
+On compatible systems:
 
-**Evidence to include:** schema, sample manifests, fingerprint checks, and change history.
+```bash
+make projects
+```
 
-## 5. AI Project Readiness Checklist
+The Quality workflow runs the same project smoke checker. Every project must succeed with default inputs and emit valid JSON, making automated evidence easy to inspect.
 
-Build a small web or CLI checklist covering evaluation, privacy, security, observability, rollback, cost, accessibility, and documentation.
+## Portfolio evidence
 
-**Evidence to include:** checklist rationale, scoring rules, and example reviews.
+For each project, preserve:
 
-## Portfolio rule
+- a clear problem statement,
+- reproducible default inputs,
+- expected output shape,
+- limitations and production boundaries,
+- extension ideas,
+- relevant tests or automated smoke checks.
 
 A project is stronger when it shows what was tested, what failed, what remains uncertain, and how another person can reproduce the result.
 
-## Full 120-chapter project roadmap
+## Production boundary
 
-For the complete project and mastery roadmap, visit:
+These projects teach architecture and engineering concepts; they intentionally avoid pretending that small examples are complete production systems. Production deployments may require stronger security, privacy, access control, availability, scalability, observability, incident response, vendor-specific integration, legal/policy review, and application-specific evaluation.
 
-### https://ramsandesh.gumroad.com
+## Commercial publication boundary
+
+The projects are Apache-2.0 companion software. The complete eBook, chapter manuscripts, PDF/DOCX editions, book artwork, and other commercial publication assets are separate.
+
+### **https://ramsandesh.gumroad.com**
