@@ -4,6 +4,14 @@
 
 This file records repository work that would otherwise require a long chat summary.
 
+## 2026-08-18 — Stable social link policy
+
+- Searched the repository for `x.com` and `twitter.com` profile links; no durable X/Twitter profile link was present.
+- Added `docs/SOCIAL_LINK_POLICY.md` to document the decision to avoid change-prone social profile URLs in long-lived book, release, and repository assets.
+- Added `scripts/check_unstable_social_links.py` so future changes fail quality checks if an X/Twitter URL is introduced outside the policy/checker files.
+- Integrated the social-link check into `.github/workflows/quality.yml`.
+- Permanent destinations remain GitHub, the project repository, Gumroad, and the maintainer contact email.
+
 ## 2026-08-18 — Companion project expansion
 
 ### Added twenty runnable projects
