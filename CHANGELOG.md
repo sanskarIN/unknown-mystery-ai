@@ -8,7 +8,7 @@ All notable changes to the open-source companion repository are documented here.
 
 ### Added
 
-- Twenty complete runnable companion projects under `projects/`:
+- Twenty-five complete runnable companion projects under `projects/`:
   - Evaluation Report Studio
   - Experiment Leaderboard
   - RAG Knowledge Explorer
@@ -29,16 +29,26 @@ All notable changes to the open-source companion repository are documented here.
   - Model Monitoring Lab
   - Privacy Audit Workbench
   - Cost Budget Planner
-- `scripts/check_projects.py` to smoke-run every project and require valid JSON output
-- `make projects` convenience target
+  - AI Release Readiness Console
+  - RAG Evaluation Capstone
+  - MLOps Release Pipeline
+  - Responsible AI Review Board
+  - Production Resilience Lab
+- `scripts/check_projects.py` inventory validation for every runnable project
+- `scripts/check_project_snapshots.py` stable-subset JSON snapshot validation for integrated capstones
+- `expected.json` fixtures for the five integrated capstones
+- `.github/workflows/projects.yml` cross-platform project verification on Linux, Windows, and macOS
+- `make projects` and `make project-snapshots` convenience targets
 - Expanded project index and staged learning-order documentation
+- Durable social-link policy and automated rejection of change-prone X/Twitter URLs in long-lived repository files
 
 ### Changed
 
-- Quality workflow now validates all companion projects on every relevant run
-- Project smoke inventory expanded from ten to twenty runnable projects
-- README repository map, navigation, and quality-gate documentation now include the complete project suite
-- `docs/PROJECTS.md` now documents implemented runnable projects instead of project ideas only
+- Quality workflow now validates all 25 companion projects and capstone snapshot fixtures
+- Project smoke inventory expanded from twenty to twenty-five runnable projects
+- README repository map, navigation, badges, and quality-gate documentation now include the capstone and cross-platform project suite
+- `docs/PROJECTS.md` now documents implemented capstones, snapshot contracts, and project verification flow
+- Long-lived project documentation prefers stable GitHub, repository, Gumroad, and email destinations over X/Twitter profile URLs
 
 Future 1.x work should remain backward-compatible with the documented stable public API unless a security or material correctness issue requires otherwise.
 
