@@ -4,6 +4,45 @@
 
 This file records repository work that would otherwise require a long chat summary.
 
+## 2026-08-18 — Final documentation and repository integrity hardening
+
+### Complete documentation layer
+
+- Added `docs/README.md` as the canonical documentation map.
+- Added `docs/USER_GUIDE.md` for installation, CLI, tests, examples, project execution, reproducibility, portfolio evidence, troubleshooting, security, and stable-release use.
+- Added `docs/DEVELOPER_GUIDE.md` for architecture-aware development, API compatibility, validation commands, build checks, determinism, cross-platform behavior, workflow security, and release discipline.
+- Added `docs/PROJECT_AUTHORING_GUIDE.md` defining the required project folder, JSON-output, catalog, snapshot, README, testing, dependency, security, and licensing contracts.
+- Added `docs/PORTFOLIO_GUIDE.md` for turning project results into reproducible evidence, technical tradeoff explanations, failure analysis, and interview defense.
+- Added `docs/COMPATIBILITY_MATRIX.md` documenting the Python, OS, CLI, API, project, packaging, and runtime compatibility surface.
+- Added `docs/KNOWN_LIMITATIONS.md` so educational scope, non-production boundaries, privacy/security limitations, synthetic-data assumptions, and non-goals are explicit.
+- Added `docs/RELEASE_RUNBOOK.md` with the exact release-preparation, verification, immutable-tag, asset-review, post-release, and patch-recovery process.
+
+### Repository completeness gate
+
+- Added `scripts/check_repository_completeness.py`.
+- The checker validates required top-level repository paths, the durable documentation baseline, required workflows, the 25-record project catalog, documentation discoverability, and canonical Gumroad links in key files.
+- Added `make repository-check` for local use.
+- Integrated repository completeness as the first substantive Quality-workflow validation so structural omissions fail before deeper package/build checks.
+
+### Root documentation and verification improvements
+
+- Reworked the root `README.md` into a concise repository hub covering quick start, CLI, local validation commands, all 25 projects, the machine-readable catalog, complete documentation entry point, quality gates, release state, compatibility/limitation notes, licensing boundaries, support, security, and durable project links.
+- Expanded `docs/TESTING_STRATEGY.md` into layered repository, API, example, catalog, project, snapshot, cross-platform, documentation/policy, package/build, and release-candidate validation.
+- Expanded `docs/RELEASE_1_1_0_CHECKLIST.md` with complete documentation, repository integrity, exact-release-commit, and post-release verification requirements.
+- Updated `CHANGELOG.md` so the 1.1.0 release notes reflect the final documentation and integrity work.
+
+### Compatibility and public/commercial boundary
+
+- No incompatible `umai` 1.x public API change was introduced by this final hardening work.
+- No mandatory runtime dependency was added.
+- The 25 project IDs and five capstone snapshot contracts remain intact.
+- Long-lived files continue to prefer GitHub, the repository, Gumroad, and email over change-prone X/Twitter profile links.
+- Paid eBook/manuscript/cover/certificate/publication assets remain outside the Apache-2.0 public software repository.
+
+### Final validation policy
+
+The repository is considered ready for the 1.1.0 stable tag only after the **exact final intended release commit** passes repository completeness, Quality, CI, Project Matrix, documentation/release checks when triggered, package build/distribution checks, and commercial-publication boundary review.
+
 ## 2026-08-18 — Project catalog, CI queue hardening, and 1.1.0 release preparation
 
 ### Machine-readable project catalog
