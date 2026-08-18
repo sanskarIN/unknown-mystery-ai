@@ -4,7 +4,24 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+    paths:
+      - "projects/**"
+      - "src/**"
+      - "tests/test_project_*.py"
+      - "scripts/check_project*.py"
+      - "scripts/check_release_candidate.py"
+      - "pyproject.toml"
+      - ".github/workflows/projects.yml"
   pull_request:
+    paths:
+      - "projects/**"
+      - "src/**"
+      - "tests/test_project_*.py"
+      - "scripts/check_project*.py"
+      - "scripts/check_release_candidate.py"
+      - "pyproject.toml"
+      - ".github/workflows/projects.yml"
+      - "docs/RC_1_1_0_VERIFICATION.md"
 
 permissions:
   contents: read
