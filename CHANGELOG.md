@@ -6,6 +6,29 @@ All notable changes to the open-source companion repository are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Ten complete runnable companion projects under `projects/`:
+  - RAG Knowledge Explorer
+  - Prompt Regression Lab
+  - Release Gate Simulator
+  - Edge Cloud Planner
+  - Privacy Audit Workbench
+  - Experiment Leaderboard
+  - Model Monitoring Lab
+  - Agent Router Sandbox
+  - Evaluation Report Studio
+  - Cost Budget Planner
+- `scripts/check_projects.py` to smoke-run every project and require valid JSON output
+- `make projects` convenience target
+- Expanded project index and learning-order documentation
+
+### Changed
+
+- Quality workflow now validates all companion projects on every relevant run
+- README repository map, navigation, and quality-gate documentation now include the project suite
+- `docs/PROJECTS.md` now documents implemented runnable projects instead of project ideas only
+
 Future 1.x work should remain backward-compatible with the documented stable public API unless a security or material correctness issue requires otherwise.
 
 ## [1.0.1] - 2026-08-17
