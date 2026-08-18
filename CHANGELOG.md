@@ -6,6 +6,10 @@ All notable changes to the open-source companion repository are documented here.
 
 ## [Unreleased]
 
+Future 1.x work should remain backward-compatible with the documented stable public API unless a security or material correctness issue requires otherwise.
+
+## [1.1.0] - 2026-08-18
+
 ### Added
 
 - Twenty-five complete runnable companion projects under `projects/`:
@@ -37,10 +41,12 @@ All notable changes to the open-source companion repository are documented here.
 - `scripts/check_projects.py` inventory validation for every runnable project
 - `scripts/check_project_snapshots.py` stable-subset JSON snapshot validation for integrated capstones
 - `expected.json` fixtures for the five integrated capstones
+- Focused unit tests for all five integrated capstones
 - `.github/workflows/projects.yml` cross-platform project verification on Linux, Windows, and macOS
 - `make projects` and `make project-snapshots` convenience targets
-- Expanded project index and staged learning-order documentation
+- Expanded project index, staged learning-order documentation, and testing strategy
 - Durable social-link policy and automated rejection of change-prone X/Twitter URLs in long-lived repository files
+- 1.1.0 release notes, compatibility rationale, metadata policy, and release checklist
 
 ### Changed
 
@@ -49,8 +55,7 @@ All notable changes to the open-source companion repository are documented here.
 - README repository map, navigation, badges, and quality-gate documentation now include the capstone and cross-platform project suite
 - `docs/PROJECTS.md` now documents implemented capstones, snapshot contracts, and project verification flow
 - Long-lived project documentation prefers stable GitHub, repository, Gumroad, and email destinations over X/Twitter profile URLs
-
-Future 1.x work should remain backward-compatible with the documented stable public API unless a security or material correctness issue requires otherwise.
+- Package, citation, README, changelog, and stable 1.x API-snapshot metadata promoted to 1.1.0 without changing the documented public symbol set
 
 ## [1.0.1] - 2026-08-17
 

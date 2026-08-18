@@ -12,14 +12,14 @@
   <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml/badge.svg"></a>
   <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/quality.yml"><img alt="Quality" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/quality.yml/badge.svg"></a>
   <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/projects.yml"><img alt="Project Matrix" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/projects.yml/badge.svg"></a>
-  <img alt="Version 1.0.1" src="https://img.shields.io/badge/version-1.0.1-brightgreen">
+  <img alt="Version 1.1.0" src="https://img.shields.io/badge/version-1.1.0-brightgreen">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-blue"></a>
   <a href="https://ramsandesh.gumroad.com"><img alt="Gumroad" src="https://img.shields.io/badge/Gumroad-Official%20Store-ff90e8"></a>
 </p>
 
 > ## 🛒 Official store: **https://ramsandesh.gumroad.com**
 
-This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Version **1.0.1** is a backward-compatible stable maintenance release with dependency-light code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, packaging checks, supply-chain hardening, tests, **25 runnable portfolio projects**, and engineering documentation that complement the 120-chapter AI mastery journey.
+This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Main-branch version **1.1.0** is a backward-compatible project-expansion release candidate with dependency-light code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, packaging checks, supply-chain hardening, tests, **25 runnable portfolio projects**, and engineering documentation that complement the 120-chapter AI mastery journey.
 
 The repository is intentionally **inspectable, testable, local/synthetic by default, and safe for learning**. Small teaching utilities are not presented as automatic substitutes for production security, privacy, scalability, governance, or reliability engineering.
 
@@ -188,6 +188,9 @@ Recommended starting points:
 - [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md) — accessible documentation/output guidance
 - [`docs/EXAMPLE_CONTRACTS.md`](docs/EXAMPLE_CONTRACTS.md) — numbered example compatibility rules
 - [`docs/SOCIAL_LINK_POLICY.md`](docs/SOCIAL_LINK_POLICY.md) — durable-link policy that avoids change-prone X/Twitter profile URLs
+- [`docs/VERSIONING_1_1_0.md`](docs/VERSIONING_1_1_0.md) — why 1.1.0 is backward compatible
+- [`docs/RELEASE_1_1_0_CHECKLIST.md`](docs/RELEASE_1_1_0_CHECKLIST.md) — 1.1.0 project-expansion verification
+- [`docs/COMPANION_RELEASE_1.1.0.md`](docs/COMPANION_RELEASE_1.1.0.md) — 1.1.0 release notes
 - [`docs/BRANCH_PROTECTION.md`](docs/BRANCH_PROTECTION.md) — recommended `main` protection settings
 - [`docs/SIGNING.md`](docs/SIGNING.md) — prospective commit/tag signing guidance
 - [`docs/REPOSITORY_SETTINGS.md`](docs/REPOSITORY_SETTINGS.md) — recommended GitHub settings and topics
@@ -224,11 +227,11 @@ The repository includes automated checks for:
 
 ## Stable GitHub release
 
-The stable GitHub software release contains the companion wheel, source distribution, and `SHA256SUMS.txt`, built from the immutable version tag. These are software companion artifacts only; the paid eBook and commercial artwork remain outside the public GitHub release.
+The latest **published stable GitHub software release remains v1.0.1 until the 1.1.0 release commit is fully verified and tagged**. GitHub releases contain companion wheel/source/checksum artifacts only; the paid eBook and commercial artwork remain outside the public software release.
 
-Current stable release page: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.1**
+Current published stable release page: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.1**
 
-Historical v1.0.0 release: **https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.0**
+Prepared 1.1.0 release notes: [`docs/COMPANION_RELEASE_1.1.0.md`](docs/COMPANION_RELEASE_1.1.0.md)
 
 ## Book vs. code licensing
 
