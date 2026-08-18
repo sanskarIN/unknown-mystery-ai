@@ -2,83 +2,164 @@
 
 > 🛒 Official book store: **https://ramsandesh.gumroad.com**
 
-The companion uses a layered testing strategy designed for small, dependency-light teaching utilities and inspectable portfolio projects.
+The companion uses layered validation for dependency-light utilities, runnable projects, documentation, packaging, and release evidence. No single check is treated as a universal proof of production fitness.
 
-## Unit tests
+## 1. Repository completeness
 
-Each utility should cover:
+`scripts/check_repository_completeness.py` validates the durable structural baseline:
 
-- normal behavior,
-- one or more meaningful boundary conditions,
-- explicit error behavior,
-- deterministic results when determinism is part of the contract.
+- expected top-level governance/build files,
+- complete documentation baseline,
+- required CI/release workflows,
+- 25-record machine-readable project catalog,
+- documentation-index discoverability,
+- canonical Gumroad link in key durable files.
 
-The five integrated capstones also have focused project tests under `tests/test_project_*.py`. These execute each capstone through the same public command path a learner uses and assert durable output facts.
+This catches accidental deletion or omission of repository-critical material before deeper tests run.
 
-## Public API tests
+## 2. Unit tests
 
-`tests/test_public_api.py` verifies that exported names exist, are unique, and the package version follows a semantic-version shape. `scripts/check_public_api.py` compares exports against the committed stable API snapshot.
+The standard-library test suite covers normal behavior, meaningful boundaries, explicit failure behavior, and determinism where determinism is part of the contract.
 
-New projects should prefer composing existing stable `umai` helpers instead of widening the 1.x public API without a deliberate compatibility review.
+Run:
 
-## Example smoke tests
+```bash
+python -m unittest discover -s tests -v
+```
 
-Numbered examples are executed across Linux, Windows, and macOS for supported Python versions. They use local/synthetic inputs and should finish without interactive input.
+The five integrated capstones also have focused tests that execute the same public command path used by learners and assert durable result facts.
 
-## Project inventory smoke tests
+## 3. Stable public API validation
 
-`scripts/check_projects.py` verifies the exact committed project inventory. Each project must:
+`tests/test_public_api.py` verifies basic export invariants. `scripts/check_public_api.py` compares the actual public exports to the committed stable 1.x API snapshot.
 
-- have a `main.py`,
-- exit successfully with default local/synthetic inputs,
+Run:
+
+```bash
+python scripts/check_public_api.py --require-version-match
+```
+
+New projects should normally compose existing stable helpers instead of widening the public API without compatibility review.
+
+## 4. Numbered example smoke tests
+
+Numbered examples use local/synthetic input and require no interactive input. Cross-platform automation exercises them on supported operating systems/Python versions.
+
+A smoke test primarily answers: "Can the documented example execute successfully in a clean supported environment?"
+
+## 5. Project catalog validation
+
+`projects/catalog.json` is the machine-readable source for project identity, title, category, learning level, entry point, and snapshot status.
+
+`scripts/check_project_catalog.py` verifies:
+
+- schema assumptions,
+- unique IDs,
+- valid categories/levels,
+- entry-point existence,
+- README presence,
+- snapshot declarations,
+- catalog/directory parity,
+- canonical publication link.
+
+## 6. Project inventory smoke tests
+
+`scripts/check_projects.py` requires the exact committed project inventory. Every default project run must:
+
+- exit successfully,
 - emit valid JSON,
-- require no provider credentials or network access for its default run.
+- remain non-interactive,
+- require no provider credentials or network calls by default.
 
-This catches missing projects, accidental extra entry points, import errors, runtime failures, and broken JSON output.
+This catches missing projects, unexpected entry points, import errors, runtime failures, and malformed default output.
 
-## Capstone snapshot tests
+## 7. Capstone snapshot tests
 
-The five integrated capstones contain `expected.json` subset fixtures. `scripts/check_project_snapshots.py` runs each project and recursively checks only the stable fields recorded in its fixture.
+The five integrated capstones contain `expected.json` subset fixtures. `scripts/check_project_snapshots.py` executes each capstone and compares only durable selected fields.
 
-Subset snapshots are intentional. They provide reproducible portfolio evidence without turning every incidental display field, fingerprint, or explanatory message into a permanent public compatibility promise.
+Subset snapshots avoid converting incidental display details into permanent compatibility promises while still catching meaningful regressions.
 
-## Cross-platform project matrix
+## 8. Cross-platform Project Matrix
 
-`.github/workflows/projects.yml` runs project inventory and snapshot checks on:
+`.github/workflows/projects.yml` validates the project catalog, all project runs, and capstone snapshots across:
 
 - Linux,
 - Windows,
 - macOS,
 - multiple supported Python versions.
 
-The main Quality workflow repeats project and snapshot validation on its release-quality path.
+See [`COMPATIBILITY_MATRIX.md`](COMPATIBILITY_MATRIX.md).
 
-## Packaging tests
+## 9. Documentation and policy checks
 
-The quality workflow validates package metadata, builds source/wheel distributions, checks distribution contents, and generates SHA-256 checksums.
+Automated checks validate:
 
-## Documentation and policy tests
+- repository-local Markdown links,
+- canonical project/Gumroad/contact links,
+- durable social-link policy,
+- public/commercial publication boundary,
+- full-SHA GitHub Actions pins,
+- release-documentation/version consistency.
 
-Repository-local Markdown links are checked without making network requests. Automated checks also protect the commercial-publication boundary, canonical project links, full-SHA GitHub Actions pins, and the durable social-link policy that avoids change-prone X/Twitter profile URLs.
+## 10. Package and build checks
 
-## Local commands
+The Quality workflow:
+
+1. installs the package,
+2. runs tests/examples/projects,
+3. builds wheel and source distributions,
+4. verifies distribution contents,
+5. generates SHA-256 checksum evidence,
+6. uploads build evidence for inspection.
+
+The distribution checker verifies that required package content such as `py.typed` is actually present in built artifacts.
+
+## 11. Release-candidate invariants
+
+For the 1.1.0 candidate:
 
 ```bash
+python scripts/check_release_candidate.py
+```
+
+This validates coordinated version metadata, public API snapshot version, release files, project count, capstone fixtures, and required workflows.
+
+## 12. Recommended full local sequence
+
+```bash
+python scripts/check_repository_completeness.py
+python scripts/check_package_metadata.py
+python scripts/check_release_documentation.py
+python scripts/check_workflow_pins.py
+python scripts/check_public_repository_boundary.py
+python scripts/check_project_links.py
+python scripts/check_unstable_social_links.py
+python scripts/check_markdown_links.py
+python scripts/check_public_api.py --require-version-match
+python scripts/check_project_catalog.py
 python -m unittest discover -s tests -v
 python scripts/check_projects.py
 python scripts/check_project_snapshots.py
+python scripts/check_release_candidate.py
 ```
 
 On compatible systems:
 
 ```bash
+make repository-check
 make test
+make project-catalog
 make projects
 make project-snapshots
+make release-check
 ```
+
+## Failure policy
+
+Do not weaken or delete a quality check merely because it detects a real mismatch. Determine whether the source, documentation, metadata, fixture, or check is wrong, fix the underlying issue, and add regression evidence when useful.
 
 ## What automation cannot prove
 
-Passing tests do not automatically prove production safety, fairness, privacy, security, scalability, reliability, regulatory compliance, or fitness for a specific application. Those require context-specific evidence and accountable human review.
+Passing automation does **not** automatically prove production safety, security, privacy, fairness, scalability, reliability, legal/regulatory compliance, model quality on real data, or fitness for a specific application. Those require context-specific evidence and accountable review.
 
-Official commercial editions of the book remain available from **https://ramsandesh.gumroad.com**.
+Official commercial editions remain available at **https://ramsandesh.gumroad.com**.
