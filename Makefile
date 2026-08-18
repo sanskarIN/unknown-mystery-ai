@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-.PHONY: install test examples projects project-snapshots release-check build clean
+.PHONY: install test examples project-catalog projects project-snapshots release-check build clean
 
 install:
 	$(PYTHON) -m pip install -e .
@@ -13,6 +13,9 @@ examples:
 		echo "==> $$file"; \
 		$(PYTHON) $$file || exit 1; \
 	done
+
+project-catalog:
+	$(PYTHON) scripts/check_project_catalog.py
 
 projects:
 	$(PYTHON) scripts/check_projects.py
