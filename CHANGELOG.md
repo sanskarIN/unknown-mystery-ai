@@ -38,19 +38,24 @@ Future 1.x work should remain backward-compatible with the documented stable pub
   - MLOps Release Pipeline
   - Responsible AI Review Board
   - Production Resilience Lab
+- `projects/catalog.json` as a machine-readable 25-project inventory with categories, levels, entry points, and snapshot declarations
+- `scripts/check_project_catalog.py` and project-catalog unit tests
 - `scripts/check_projects.py` inventory validation for every runnable project
 - `scripts/check_project_snapshots.py` stable-subset JSON snapshot validation for integrated capstones
 - `expected.json` fixtures for the five integrated capstones
 - Focused unit tests for all five integrated capstones
 - `.github/workflows/projects.yml` cross-platform project verification on Linux, Windows, and macOS
-- `make projects` and `make project-snapshots` convenience targets
-- Expanded project index, staged learning-order documentation, and testing strategy
+- `make project-catalog`, `make projects`, `make project-snapshots`, and `make release-check` convenience targets
+- Expanded project index, staged learning-order documentation, catalog contract, and testing strategy
 - Durable social-link policy and automated rejection of change-prone X/Twitter URLs in long-lived repository files
-- 1.1.0 release notes, compatibility rationale, metadata policy, and release checklist
+- 1.1.0 release notes, compatibility rationale, metadata policy, release-candidate verifier, and release checklist
 
 ### Changed
 
-- Quality workflow now validates all 25 companion projects and capstone snapshot fixtures
+- CI, Quality, Project Matrix, Documentation Links, Example Smoke Tests, and Release Check workflows now cancel superseded runs with workflow/ref-or-PR concurrency groups
+- High-frequency workflow jobs now have explicit timeout limits to prevent indefinitely hanging jobs
+- Quality workflow now validates project catalog integrity, all 25 companion projects, capstone snapshot fixtures, and 1.1.0 release-candidate invariants
+- Project Matrix now validates the machine-readable project catalog before project smoke/snapshot checks
 - Project smoke inventory expanded from twenty to twenty-five runnable projects
 - README repository map, navigation, badges, and quality-gate documentation now include the capstone and cross-platform project suite
 - `docs/PROJECTS.md` now documents implemented capstones, snapshot contracts, and project verification flow
@@ -89,7 +94,7 @@ Future 1.x work should remain backward-compatible with the documented stable pub
 - Declared the documented `umai.__all__` surface stable for the 1.x line
 - Added `api/public_api_1_0.json` as the stable compatibility snapshot
 - Published 1.x stability guarantees and versioned example contracts
-- Added the stable 1.0 maintainer verification checklist
+- Added the stable 1.0 maintainer release checklist
 - Updated package metadata to Production/Stable
 - Updated citation metadata to 1.0.0
 - Published comprehensive 1.0 release notes and README
