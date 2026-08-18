@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "official_store": "https://ramsandesh.gumroad.com",
+  "projects": [
+    {"id":"evaluation_report_studio","title":"Evaluation Report Studio","category":"foundation-evaluation","level":"foundation","entrypoint":"projects/evaluation_report_studio/main.py","snapshot":false},
+    {"id":"experiment_leaderboard","title":"Experiment Leaderboard","category":"foundation-evaluation","level":"foundation","entrypoint":"projects/experiment_leaderboard/main.py","snapshot":false},
+    {"id":"rag_knowledge_explorer","title":"RAG Knowledge Explorer","category":"foundation-evaluation","level":"foundation","entrypoint":"projects/rag_knowledge_explorer/main.py","snapshot":false},
+    {"id":"retrieval_ranking_benchmark","title":"Retrieval Ranking Benchmark","category":"foundation-evaluation","level":"foundation","entrypoint":"projects/retrieval_ranking_benchmark/main.py","snapshot":false},
+    {"id":"text_chunking_lab","title":"Text Chunking Lab","category":"foundation-evaluation","level":"foundation","entrypoint":"projects/text_chunking_lab/main.py","snapshot":false},
+
+    {"id":"prompt_template_studio","title":"Prompt Template Studio","category":"prompting-agents-serving","level":"intermediate","entrypoint":"projects/prompt_template_studio/main.py","snapshot":false},
+    {"id":"prompt_regression_lab","title":"Prompt Regression Lab","category":"prompting-agents-serving","level":"intermediate","entrypoint":"projects/prompt_regression_lab/main.py","snapshot":false},
+    {"id":"agent_router_sandbox","title":"Agent Router Sandbox","category":"prompting-agents-serving","level":"intermediate","entrypoint":"projects/agent_router_sandbox/main.py","snapshot":false},
+    {"id":"local_serving_contract","title":"Local Serving Contract","category":"prompting-agents-serving","level":"intermediate","entrypoint":"projects/local_serving_contract/main.py","snapshot":false},
+    {"id":"resilient_request_pipeline","title":"Resilient Request Pipeline","category":"prompting-agents-serving","level":"intermediate","entrypoint":"projects/resilient_request_pipeline/main.py","snapshot":false},
+
+    {"id":"artifact_registry_workflow","title":"Artifact Registry Workflow","category":"governance-release","level":"advanced","entrypoint":"projects/artifact_registry_workflow/main.py","snapshot":false},
+    {"id":"release_manifest_builder","title":"Release Manifest Builder","category":"governance-release","level":"advanced","entrypoint":"projects/release_manifest_builder/main.py","snapshot":false},
+    {"id":"evidence_bundle_builder","title":"Evidence Bundle Builder","category":"governance-release","level":"advanced","entrypoint":"projects/evidence_bundle_builder/main.py","snapshot":false},
+    {"id":"release_comparison_dashboard","title":"Release Comparison Dashboard","category":"governance-release","level":"advanced","entrypoint":"projects/release_comparison_dashboard/main.py","snapshot":false},
+    {"id":"release_gate_simulator","title":"Release Gate Simulator","category":"governance-release","level":"advanced","entrypoint":"projects/release_gate_simulator/main.py","snapshot":false},
+
+    {"id":"feature_flag_rollout_lab","title":"Feature Flag Rollout Lab","category":"operations-privacy-cost","level":"advanced","entrypoint":"projects/feature_flag_rollout_lab/main.py","snapshot":false},
+    {"id":"edge_cloud_planner","title":"Edge Cloud Planner","category":"operations-privacy-cost","level":"advanced","entrypoint":"projects/edge_cloud_planner/main.py","snapshot":false},
+    {"id":"model_monitoring_lab","title":"Model Monitoring Lab","category":"operations-privacy-cost","level":"advanced","entrypoint":"projects/model_monitoring_lab/main.py","snapshot":false},
+    {"id":"privacy_audit_workbench","title":"Privacy Audit Workbench","category":"operations-privacy-cost","level":"advanced","entrypoint":"projects/privacy_audit_workbench/main.py","snapshot":false},
+    {"id":"cost_budget_planner","title":"Cost Budget Planner","category":"operations-privacy-cost","level":"advanced","entrypoint":"projects/cost_budget_planner/main.py","snapshot":false},
+
+    {"id":"ai_release_readiness_console","title":"AI Release Readiness Console","category":"integrated-capstone","level":"capstone","entrypoint":"projects/ai_release_readiness_console/main.py","snapshot":true},
+    {"id":"rag_evaluation_capstone","title":"RAG Evaluation Capstone","category":"integrated-capstone","level":"capstone","entrypoint":"projects/rag_evaluation_capstone/main.py","snapshot":true},
+    {"id":"mlops_release_pipeline","title":"MLOps Release Pipeline","category":"integrated-capstone","level":"capstone","entrypoint":"projects/mlops_release_pipeline/main.py","snapshot":true},
+    {"id":"responsible_ai_review_board","title":"Responsible AI Review Board","category":"integrated-capstone","level":"capstone","entrypoint":"projects/responsible_ai_review_board/main.py","snapshot":true},
+    {"id":"production_resilience_lab","title":"Production Resilience Lab","category":"integrated-capstone","level":"capstone","entrypoint":"projects/production_resilience_lab/main.py","snapshot":true}
+  ]
+}
