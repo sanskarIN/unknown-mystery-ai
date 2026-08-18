@@ -2,6 +2,32 @@ name: Release Check
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "projects/**"
+      - "scripts/check_release_automation.py"
+      - "scripts/check_release_candidate.py"
+      - "scripts/check_repository_completeness.py"
+      - "scripts/check_project*.py"
+      - "scripts/check_release_documentation.py"
+      - "scripts/check_workflow_pins.py"
+      - "pyproject.toml"
+      - "api/**"
+      - "CITATION.cff"
+      - "CHANGELOG.md"
+      - "README.md"
+      - "docs/COMPANION_RELEASE_1.1.0.md"
+      - "docs/RELEASE_1_1_0_CHECKLIST.md"
+      - "docs/RELEASE_RUNBOOK.md"
+      - "docs/RELEASE_STATUS.md"
+      - "docs/RC_1_1_0_VERIFICATION.md"
+      - ".github/workflows/publish-stable.yml"
+      - ".github/workflows/release-assets.yml"
+      - ".github/workflows/release-check.yml"
+      - ".github/workflows/docs-links.yml"
   pull_request:
     paths:
       - "src/**"
@@ -26,6 +52,7 @@ on:
       - ".github/workflows/publish-stable.yml"
       - ".github/workflows/release-assets.yml"
       - ".github/workflows/release-check.yml"
+      - ".github/workflows/docs-links.yml"
 
 permissions:
   contents: read
