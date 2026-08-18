@@ -1,0 +1,7 @@
+{
+  "project": "AI Release Readiness Console",
+  "metrics": {"accuracy": 0.75},
+  "release": {"passed": true, "evidence_passed": true, "failed_gates": []},
+  "validation_issues": [],
+  "store": "https://ramsandesh.gumroad.com"
+}
