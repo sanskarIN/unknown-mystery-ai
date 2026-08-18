@@ -1,6 +1,9 @@
 name: Attach Stable Release Assets
 
 on:
+  workflow_run:
+    workflows: ["Publish Stable"]
+    types: [completed]
   release:
     types: [published]
   workflow_dispatch:
@@ -10,6 +13,9 @@ permissions:
 
 jobs:
   assets:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -57,6 +63,8 @@ jobs:
           python scripts/check_repository_completeness.py
           python scripts/check_package_metadata.py
           python scripts/check_release_documentation.py
+          python scripts/check_workflow_pins.py
+          python scripts/check_release_automation.py
           python scripts/check_public_repository_boundary.py
           python scripts/check_public_api.py --require-version-match
           python scripts/check_project_catalog.py
@@ -86,6 +94,7 @@ jobs:
           gh release view "$TAG"
           gh release upload "$TAG" dist/* --clobber
 
+# workflow_run ensures asset attachment is not dependent on a release event emitted by GITHUB_TOKEN.
 # Release software is built from the immutable published tag, never post-release main.
 # Paid eBook/commercial assets are intentionally excluded.
 # Official publication: https://ramsandesh.gumroad.com
