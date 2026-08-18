@@ -4,6 +4,8 @@
 
 This directory contains complete, dependency-light projects that build on the public `umai` companion package. They use synthetic or local data by default and are designed to be inspectable, runnable, and safe for learning.
 
+The machine-readable [`catalog.json`](catalog.json) is the canonical project inventory for tooling. It records each project's ID, title, category, learning level, entry point, and snapshot-fixture status.
+
 ## Foundation and evaluation
 
 1. [`evaluation_report_studio`](evaluation_report_studio/) — classification metrics and JSON-friendly reports.
@@ -51,6 +53,7 @@ From the repository root:
 ```bash
 python -m pip install -e .
 python projects/rag_knowledge_explorer/main.py
+python scripts/check_project_catalog.py
 python scripts/check_projects.py
 python scripts/check_project_snapshots.py
 ```
@@ -58,6 +61,7 @@ python scripts/check_project_snapshots.py
 On compatible systems:
 
 ```bash
+make project-catalog
 make projects
 make project-snapshots
 ```
@@ -66,10 +70,11 @@ Each project has its own README with goals, commands, extension ideas, and safet
 
 ## Automated verification
 
+- `scripts/check_project_catalog.py` validates catalog schema, uniqueness, category/level values, entry points, README files, snapshot declarations, canonical Gumroad links, and runtime inventory parity.
 - `scripts/check_projects.py` requires the complete project inventory and validates that every default run exits successfully and emits valid JSON.
 - `scripts/check_project_snapshots.py` validates selected stable fields for capstone projects without freezing incidental output details.
-- `.github/workflows/projects.yml` runs the project and snapshot checks on Linux, Windows, and macOS using multiple supported Python versions.
-- The main Quality workflow repeats project and snapshot checks before build evidence is accepted.
+- `.github/workflows/projects.yml` runs catalog, project, and snapshot checks on Linux, Windows, and macOS using multiple supported Python versions.
+- The main Quality workflow repeats the same project integrity checks before build evidence is accepted.
 
 ## Design rules
 
