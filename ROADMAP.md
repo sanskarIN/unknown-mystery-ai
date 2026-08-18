@@ -89,7 +89,7 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] `v1.0.1` released from a Quality-verified commit
 - [x] Wheel, source archive, and SHA-256 manifest attached from the immutable `v1.0.1` tag
 
-## v1.1.0 — Portfolio projects, capstones, and final repository hardening
+## v1.1.0 — Portfolio projects, capstones, complete docs, and stable release hardening
 
 - [x] 25 complete runnable companion projects
 - [x] Five project groups covering evaluation, prompting/agents, release engineering, operations/privacy/cost, and integrated mastery
@@ -102,19 +102,27 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] Durable social-link policy for long-lived repository/publication assets
 - [x] Package/citation/API snapshot/README/changelog metadata promoted to 1.1.0 without changing stable public symbols
 - [x] Canonical `docs/README.md` documentation hub
-- [x] Complete user, developer, project-authoring, portfolio, compatibility, limitations, and release-runbook documentation
+- [x] Complete user, developer, project-authoring, portfolio, compatibility, limitations, testing, release-process, release-asset, and release-runbook documentation
 - [x] Repository completeness validator and `make repository-check`
 - [x] Quality workflow integration for repository completeness, documentation, project, API, build, and release-candidate gates
+- [x] Version-aware stable publication derived from package metadata
+- [x] Exact-commit publication gate requiring CI, Quality, Project Matrix, Documentation Links, and Release Check
+- [x] Immutable-tag release asset workflow for wheel/source/checksum artifacts
+- [x] `scripts/check_release_automation.py` regression-protects stable publication and asset workflow contracts
+- [x] Release Check and manual Release Candidate workflow validate release automation and repository integrity
+- [x] Project Matrix is triggered by release-workflow changes and validates repository completeness across platforms
+- [x] `make release-automation` and aggregate `make verify`
 - [x] Expanded testing strategy and exact-release-commit checklist
 - [x] 1.1.0 release notes prepared
-- [ ] Verify repository completeness, Quality, CI, Project Matrix, and triggered release/documentation checks on the exact final release commit
-- [ ] Create immutable `v1.1.0` tag and GitHub release
-- [ ] Attach verified software wheel/source/checksum assets from the immutable tag
-- [ ] Update release status/checklist after publication and close the release-tracking issue
+- [ ] Verify all required checks on the exact final release-automation commit
+- [ ] Promote that exact verified commit to `main`
+- [ ] Let the verification-gated stable publication workflow create immutable `v1.1.0` and its GitHub release
+- [ ] Verify immutable-tag wheel/source/checksum assets are attached
+- [ ] Update release status/checklist/README after publication and close the release-tracking issue
 
 ## After 1.1.0
 
-Future 1.x work should remain backward-compatible and maintenance-focused: bug fixes with regression evidence, optional project additions, accessibility improvements, documentation corrections, dependency/action security updates, and release automation maintenance. Major public-API redesigns should wait for a future major version.
+Future 1.x work should remain backward-compatible and maintenance-focused: regression-backed bug fixes, optional project additions, accessibility improvements, documentation corrections, dependency/action security updates, and maintenance of release automation. Major public-API redesigns should wait for a future major version.
 
 ## Complete book roadmap
 
