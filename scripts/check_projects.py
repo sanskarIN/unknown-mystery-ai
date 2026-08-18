@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECTS = ROOT / "projects"
 EXPECTED_PROJECTS = {
     "agent_router_sandbox",
+    "ai_release_readiness_console",
     "artifact_registry_workflow",
     "cost_budget_planner",
     "edge_cloud_planner",
@@ -19,15 +20,19 @@ EXPECTED_PROJECTS = {
     "experiment_leaderboard",
     "feature_flag_rollout_lab",
     "local_serving_contract",
+    "mlops_release_pipeline",
     "model_monitoring_lab",
     "privacy_audit_workbench",
+    "production_resilience_lab",
     "prompt_regression_lab",
     "prompt_template_studio",
+    "rag_evaluation_capstone",
     "rag_knowledge_explorer",
     "release_comparison_dashboard",
     "release_gate_simulator",
     "release_manifest_builder",
     "resilient_request_pipeline",
+    "responsible_ai_review_board",
     "retrieval_ranking_benchmark",
     "text_chunking_lab",
 }
