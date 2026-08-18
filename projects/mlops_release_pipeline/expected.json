@@ -1,0 +1,6 @@
+{
+  "project": "MLOps Release Pipeline",
+  "artifact": {"approved": true},
+  "release": {"passed": true, "evidence_passed": true, "failed_gates": []},
+  "store": "https://ramsandesh.gumroad.com"
+}
