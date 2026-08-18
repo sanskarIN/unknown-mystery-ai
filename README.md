@@ -35,7 +35,7 @@ The repository is intentionally **inspectable, testable, local/synthetic by defa
 - Privacy redaction, structured validation, cost budgeting, caching, retries, fallback, and rate limiting
 - CLI-friendly JSON/text reporting and `python -m umai` execution
 - PEP 561 inline typing support
-- Ten complete companion projects with automated smoke validation
+- Twenty complete companion projects with automated smoke validation
 - Responsible AI, privacy, security, reproducibility, supply-chain, accessibility, and governance guidance
 
 ## Quick start
@@ -87,17 +87,27 @@ See **[`examples/README.md`](examples/README.md)**.
 
 ## Companion projects
 
-The repository now includes ten larger runnable projects:
+The repository now includes twenty larger runnable projects:
 
-- RAG Knowledge Explorer
-- Prompt Regression Lab
-- Release Gate Simulator
-- Edge Cloud Planner
-- Privacy Audit Workbench
-- Experiment Leaderboard
-- Model Monitoring Lab
-- Agent Router Sandbox
 - Evaluation Report Studio
+- Experiment Leaderboard
+- RAG Knowledge Explorer
+- Retrieval Ranking Benchmark
+- Text Chunking Lab
+- Prompt Template Studio
+- Prompt Regression Lab
+- Agent Router Sandbox
+- Local Serving Contract
+- Resilient Request Pipeline
+- Artifact Registry Workflow
+- Release Manifest Builder
+- Evidence Bundle Builder
+- Release Comparison Dashboard
+- Release Gate Simulator
+- Feature Flag Rollout Lab
+- Edge Cloud Planner
+- Model Monitoring Lab
+- Privacy Audit Workbench
 - Cost Budget Planner
 
 Run all project smoke checks with:
@@ -171,7 +181,7 @@ The repository includes automated checks for:
 
 - supported Python tests,
 - cross-platform numbered example smoke runs,
-- all ten companion project default runs and valid JSON output,
+- all twenty companion project default runs and valid JSON output,
 - package metadata/version consistency,
 - release notes/changelog/version consistency,
 - PEP 561 typing marker packaging,
