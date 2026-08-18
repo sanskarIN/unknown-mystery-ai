@@ -2,7 +2,7 @@
 
 > 🛒 **Official Gumroad store:** **https://ramsandesh.gumroad.com**
 
-The repository now includes twenty complete, runnable companion projects under [`projects/`](../projects/). They use the stable `umai` package, local or synthetic data by default, and no provider credentials.
+The repository now includes twenty-five complete, runnable companion projects under [`projects/`](../projects/). They use the stable `umai` package, local or synthetic data by default, and no provider credentials.
 
 ## Suggested learning order
 
@@ -38,6 +38,14 @@ The repository now includes twenty complete, runnable companion projects under [
 19. **Privacy Audit Workbench** — practice validation, redaction, and pseudonymous identifiers.
 20. **Cost Budget Planner** — estimate capacity from caller-supplied pricing assumptions.
 
+### Integrated mastery capstones
+
+21. **AI Release Readiness Console** — connect validation, privacy, metrics, release gates, and evidence in one review flow.
+22. **RAG Evaluation Capstone** — connect retrieved evidence, ranking metrics, and an explicit output-regression contract.
+23. **MLOps Release Pipeline** — connect artifact approval, baseline comparison, release gates, reproducible release identity, and evidence.
+24. **Responsible AI Review Board** — connect intended-use records, human-oversight documentation, privacy-aware display, and governance gates.
+25. **Production Resilience Lab** — connect serving identity, bounded caching, failover, edge/cloud placement, and explicit cost assumptions.
+
 ## Verification
 
 Install the package and run every project:
@@ -45,15 +53,23 @@ Install the package and run every project:
 ```bash
 python -m pip install -e .
 python scripts/check_projects.py
+python scripts/check_project_snapshots.py
 ```
 
 On compatible systems:
 
 ```bash
 make projects
+make project-snapshots
 ```
 
-The Quality workflow runs the same project smoke checker. Every project must succeed with default inputs and emit valid JSON, making automated evidence easy to inspect.
+The Quality workflow runs both project checks. A dedicated Project Matrix workflow repeats them on Linux, Windows, and macOS with multiple supported Python versions.
+
+## Snapshot fixtures
+
+The five integrated capstones include small `expected.json` files. These are subset contracts rather than full-output golden files: they validate durable facts such as project identity, PASS/BLOCK state, selected metrics, and official store link while allowing non-contract output details to evolve within the stable 1.x line.
+
+This gives the projects stronger portfolio evidence without turning every educational display field into a permanent public API promise.
 
 ## Portfolio evidence
 
