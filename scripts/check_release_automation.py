@@ -2,7 +2,7 @@
 
 The check is intentionally dependency-free and inspects workflow source text rather than
 requiring a YAML parser. It protects the repository from silently reverting to stale,
-hard-coded, or weakly chained historical release workflows.
+hard-coded, weakly chained, or PR-only release verification workflows.
 
 Official publication: https://ramsandesh.gumroad.com
 """
@@ -23,27 +23,39 @@ def require(text: str, needle: str, label: str, failures: list[str]) -> None:
         failures.append(f"{label}: missing required contract text: {needle}")
 
 
+def read_workflow(name: str, failures: list[str]) -> str:
+    path = WORKFLOWS / name
+    if not path.is_file():
+        failures.append(f"missing .github/workflows/{name}")
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def require_main_push(text: str, label: str, failures: list[str]) -> None:
+    """Require the workflow to be capable of producing exact-SHA evidence on main."""
+    require(text, "push:", label, failures)
+    require(text, "branches: [main]", label, failures)
+
+
 def main() -> int:
     failures: list[str] = []
 
     project = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]
     version = str(project["version"])
 
-    publish_path = WORKFLOWS / "publish-stable.yml"
-    assets_path = WORKFLOWS / "release-assets.yml"
-    if not publish_path.is_file():
-        failures.append("missing .github/workflows/publish-stable.yml")
-    if not assets_path.is_file():
-        failures.append("missing .github/workflows/release-assets.yml")
+    publish = read_workflow("publish-stable.yml", failures)
+    assets = read_workflow("release-assets.yml", failures)
+    ci = read_workflow("ci.yml", failures)
+    quality = read_workflow("quality.yml", failures)
+    projects = read_workflow("projects.yml", failures)
+    docs_links = read_workflow("docs-links.yml", failures)
+    release_check = read_workflow("release-check.yml", failures)
 
     if failures:
         print("Release automation: FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
-
-    publish = publish_path.read_text(encoding="utf-8")
-    assets = assets_path.read_text(encoding="utf-8")
 
     publish_requirements = (
         "name: Publish Stable",
@@ -82,6 +94,18 @@ def main() -> int:
     for needle in asset_requirements:
         require(assets, needle, "release-assets.yml", failures)
 
+    # Every workflow required by the publication gate must be able to generate evidence for
+    # the exact commit after it reaches main. PR-only checks are useful, but they are not a
+    # substitute for exact main-SHA verification because merge/update mechanics can differ.
+    for label, text in (
+        ("ci.yml", ci),
+        ("quality.yml", quality),
+        ("projects.yml", projects),
+        ("docs-links.yml", docs_links),
+        ("release-check.yml", release_check),
+    ):
+        require_main_push(text, label, failures)
+
     # Stable publication must remain version-aware. Historical hard-coded tags were useful
     # for one release but are unsafe as a permanent workflow contract.
     for workflow_name, text in (("publish-stable.yml", publish), ("release-assets.yml", assets)):
@@ -98,12 +122,7 @@ def main() -> int:
     # The asset workflow intentionally listens to workflow_run in addition to release events.
     # A release created with GITHUB_TOKEN may not recursively trigger another normal workflow
     # from its release event, while workflow_run provides a dependable internal hand-off.
-    require(
-        assets,
-        "workflow_run:",
-        "release-assets.yml",
-        failures,
-    )
+    require(assets, "workflow_run:", "release-assets.yml", failures)
 
     if failures:
         print("Release automation: FAIL")
@@ -114,6 +133,7 @@ def main() -> int:
     print("Release automation: PASS")
     print(f"- package version: {version}")
     print("- publication waits for the exact-commit verification stack")
+    print("- all required verification workflows can run for the exact main SHA")
     print("- stable tag/version is resolved dynamically")
     print("- release assets are chained from stable publication workflow completion")
     print("- release assets are rebuilt from the immutable published tag")
