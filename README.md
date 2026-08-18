@@ -19,7 +19,7 @@
 
 > ## 🛒 Official store: **https://ramsandesh.gumroad.com**
 
-This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Main-branch version **1.1.0** is a backward-compatible project-expansion release candidate with dependency-light Python utilities, examples, tests, **25 runnable portfolio projects**, five integrated capstones, release evidence, cross-platform validation, security/privacy guidance, packaging checks, and complete maintainer/user documentation.
+This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Main-branch version **1.1.0** is a backward-compatible project-expansion release candidate with dependency-light Python utilities, examples, tests, **25 runnable portfolio projects**, five integrated capstones, release evidence, cross-platform validation, security/privacy guidance, packaging checks, complete documentation, and verification-gated stable-release automation.
 
 The repository is intentionally **inspectable, testable, local/synthetic by default, and safe for learning**. It does not present small teaching utilities as automatic substitutes for production security, privacy, scalability, governance, reliability, or legal review.
 
@@ -39,6 +39,7 @@ The repository is intentionally **inspectable, testable, local/synthetic by defa
 - Five integrated capstones with stable-subset snapshots
 - Linux/Windows/macOS project verification
 - Wheel/source-distribution build and checksum evidence
+- Exact-commit stable publication checks and immutable-tag release assets
 - Documentation for users, developers, project authors, maintainers, releases, security, privacy, and portfolio work
 
 ## Quick start
@@ -69,6 +70,7 @@ Run the repository's main local checks:
 
 ```bash
 python scripts/check_repository_completeness.py
+python scripts/check_release_automation.py
 python scripts/check_project_catalog.py
 python scripts/check_projects.py
 python scripts/check_project_snapshots.py
@@ -89,10 +91,12 @@ make install
 make test
 make examples
 make repository-check
+make release-automation
 make project-catalog
 make projects
 make project-snapshots
 make release-check
+make verify
 make build
 ```
 
@@ -172,7 +176,9 @@ Important guides include:
 - [`docs/RESPONSIBLE_AI_CHECKLIST.md`](docs/RESPONSIBLE_AI_CHECKLIST.md) - responsible-AI review
 - [`docs/SUPPLY_CHAIN.md`](docs/SUPPLY_CHAIN.md) - supply-chain controls
 - [`docs/SOCIAL_LINK_POLICY.md`](docs/SOCIAL_LINK_POLICY.md) - durable-link policy
-- [`docs/RELEASE_RUNBOOK.md`](docs/RELEASE_RUNBOOK.md) - maintainer release procedure
+- [`docs/RELEASE_PROCESS.md`](docs/RELEASE_PROCESS.md) - release policy
+- [`docs/RELEASE_RUNBOOK.md`](docs/RELEASE_RUNBOOK.md) - exact maintainer release procedure
+- [`docs/RELEASE_ASSETS.md`](docs/RELEASE_ASSETS.md) - immutable release-asset provenance
 - [`docs/RELEASE_STATUS.md`](docs/RELEASE_STATUS.md) - current release identity
 - [`docs/RELEASE_1_1_0_CHECKLIST.md`](docs/RELEASE_1_1_0_CHECKLIST.md) - 1.1.0 verification checklist
 - [`docs/COMPANION_RELEASE_1.1.0.md`](docs/COMPANION_RELEASE_1.1.0.md) - prepared 1.1.0 release notes
@@ -203,6 +209,7 @@ The automated quality stack validates:
 
 - repository/documentation structural completeness,
 - package and release metadata consistency,
+- stable release-automation contract,
 - stable public API consistency,
 - Python unit tests,
 - numbered example smoke runs,
@@ -221,15 +228,19 @@ The automated quality stack validates:
 
 Passing these checks is strong repository evidence but is not a universal production-safety, security, fairness, privacy, or legal certification.
 
-## Stable software release
+## Stable software release pipeline
 
-The latest **published stable GitHub software release remains v1.0.1 until the 1.1.0 release candidate is fully verified and tagged**.
+The latest **published stable GitHub software release remains v1.0.1 until the 1.1.0 release candidate is fully verified and published**.
 
 Current published stable release:
 
 `https://github.com/sanskarIN/unknown-mystery-ai/releases/tag/v1.0.1`
 
 Prepared 1.1.0 notes: [`docs/COMPANION_RELEASE_1.1.0.md`](docs/COMPANION_RELEASE_1.1.0.md).
+
+For a prepared stable version, the publication workflow requires the successful Quality run to refer to the current `main` commit and then waits for successful **CI, Quality, Project Matrix, Documentation Links, and Release Check** evidence for that same commit. It derives `v<version>` from package metadata rather than hard-coding one historical version.
+
+After the stable release exists, the asset workflow rebuilds the wheel/source distribution and checksum manifest from the immutable published tag before uploading them. See [`docs/RELEASE_ASSETS.md`](docs/RELEASE_ASSETS.md) and [`docs/RELEASE_RUNBOOK.md`](docs/RELEASE_RUNBOOK.md).
 
 ## Licensing boundary
 
