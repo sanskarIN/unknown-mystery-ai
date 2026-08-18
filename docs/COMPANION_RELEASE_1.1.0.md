@@ -2,7 +2,7 @@
 
 > 🛒 Official publication: **https://ramsandesh.gumroad.com**
 
-Version **1.1.0** expands the open-source companion with a portfolio-oriented project layer, five integrated capstones, a complete documentation system, and stronger repository-integrity validation while preserving the documented stable 1.x `umai` public API.
+Version **1.1.0** expands the open-source companion with a portfolio-oriented project layer, five integrated capstones, a complete documentation system, stronger repository-integrity validation, and verification-gated stable-release automation while preserving the documented stable 1.x `umai` public API.
 
 ## Highlights
 
@@ -13,7 +13,9 @@ Version **1.1.0** expands the open-source companion with a portfolio-oriented pr
 - Cross-platform project verification on Linux, Windows, and macOS.
 - Focused project tests integrated into the standard unit-test suite.
 - Canonical documentation hub plus complete user, developer, project-authoring, portfolio, compatibility, limitations, testing, and release-runbook guidance.
-- Repository-completeness validation integrated into the Quality workflow.
+- Repository-completeness validation integrated into Quality, Project Matrix, Release Check, and immutable-tag asset verification.
+- Version-aware stable publication that waits for exact-commit CI/Quality/Project Matrix/Documentation Links/Release Check evidence.
+- Immutable-tag wheel/source/checksum asset generation after stable publication.
 - Durable social-link policy that avoids embedding change-prone X/Twitter profile URLs in long-lived repository assets.
 - Public/commercial publication boundary checks that keep paid book assets outside the Apache-2.0 software release.
 
@@ -35,7 +37,8 @@ Version 1.1.0 adds a canonical [`docs/README.md`](README.md) index and dedicated
 - portfolio evidence,
 - Python/platform/API compatibility,
 - known limitations and non-goals,
-- exact maintainer release procedures.
+- release policy and exact maintainer procedures,
+- immutable release-asset provenance.
 
 The root README points to this documentation hub so major user and maintainer workflows are discoverable from the repository front page.
 
@@ -45,6 +48,7 @@ The repository now includes a structural completeness gate in addition to packag
 
 ```bash
 python scripts/check_repository_completeness.py
+python scripts/check_release_automation.py
 python scripts/check_project_catalog.py
 python -m unittest discover -s tests -v
 python scripts/check_projects.py
@@ -53,13 +57,33 @@ python scripts/check_public_api.py --require-version-match
 python scripts/check_release_candidate.py
 ```
 
-The completeness gate checks required top-level repository assets, durable documentation, required workflows, project catalog count, documentation discoverability, and canonical long-lived links.
+The completeness gate checks required top-level repository assets, durable documentation, required workflows, required quality/release scripts, project catalog count, documentation discoverability, and canonical long-lived links.
 
-A dedicated Project Matrix repeats project/catalog/snapshot checks across Linux, Windows, and macOS using multiple supported Python versions. The Quality workflow additionally verifies metadata, release documentation, full-SHA workflow pins, public/commercial boundaries, durable links, stable API identity, examples, package builds, distribution contents, and SHA-256 evidence.
+`check_release_automation.py` verifies that the stable publication workflow is version-aware, requires the exact current main commit, waits for the complete verification stack, and hands release assets off to immutable-tag build automation instead of retaining stale historical version constants.
+
+A dedicated Project Matrix repeats repository/catalog/project/snapshot checks across Linux, Windows, and macOS using multiple supported Python versions. The Quality workflow additionally verifies metadata, release documentation, full-SHA workflow pins, release automation, public/commercial boundaries, durable links, stable API identity, examples, package builds, distribution contents, and SHA-256 evidence.
+
+## Stable publication and assets
+
+For a prepared stable version, `.github/workflows/publish-stable.yml` runs only after a successful Quality run on `main`. It then requires:
+
+1. the successful Quality SHA to equal the current `main` SHA,
+2. a stable `x.y.z` package version,
+3. matching versioned release notes and release checklist,
+4. a matching changelog section,
+5. successful exact-SHA runs for **CI, Quality, Project Matrix, Documentation Links, and Release Check**.
+
+If another required run is pending, publication waits. A failed required run blocks the release.
+
+The workflow derives `v<version>` from package metadata and creates the GitHub release targeting the exact verified commit.
+
+After stable publication completes, `.github/workflows/release-assets.yml` resolves the published tag, checks out that immutable source, reruns repository/package/API/project/boundary validation, builds the wheel and source distribution, creates `SHA256SUMS.txt`, and uploads only the software artifacts to the release.
+
+This workflow hand-off does not depend solely on a `release` event produced by `GITHUB_TOKEN`.
 
 ## Compatibility
 
-The stable public `umai` symbol set is unchanged from 1.0.x. Version 1.1.0 adds projects, fixtures, tests, workflows, validation scripts, and documentation without removing or incompatibly changing documented 1.x APIs.
+The stable public `umai` symbol set is unchanged from 1.0.x. Version 1.1.0 adds projects, fixtures, tests, workflows, validation scripts, documentation, and safer release automation without removing or incompatibly changing documented 1.x APIs.
 
 The stable package continues to target Python 3.10+ and does not add a mandatory third-party runtime dependency.
 
@@ -69,7 +93,7 @@ The companion remains an educational engineering baseline. Passing repository au
 
 ## Release verification rule
 
-The `v1.1.0` stable tag must be created from the **exact intended release commit only after the required repository, Quality, CI, Project Matrix, and release/documentation checks have succeeded**. Built software assets should come from the immutable tag.
+The `v1.1.0` stable tag must identify the **exact intended release commit after repository completeness, release-automation, Quality, CI, Project Matrix, Documentation Links, and Release Check evidence has succeeded**. Built software assets must come from the immutable tag.
 
 ## Public/commercial boundary
 
