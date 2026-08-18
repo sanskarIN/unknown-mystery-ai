@@ -89,26 +89,32 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] `v1.0.1` released from a Quality-verified commit
 - [x] Wheel, source archive, and SHA-256 manifest attached from the immutable `v1.0.1` tag
 
-## v1.1.0 — Portfolio projects and integrated capstones
+## v1.1.0 — Portfolio projects, capstones, and final repository hardening
 
 - [x] 25 complete runnable companion projects
 - [x] Five project groups covering evaluation, prompting/agents, release engineering, operations/privacy/cost, and integrated mastery
 - [x] Five integrated capstone projects
+- [x] Machine-readable 25-project catalog and catalog validator
 - [x] Exact project-inventory smoke validation
 - [x] Stable-subset JSON snapshot fixtures for capstones
 - [x] Focused project tests in the standard unit-test suite
 - [x] Cross-platform Project Matrix on Linux, Windows, and macOS
-- [x] Expanded project/testing documentation
 - [x] Durable social-link policy for long-lived repository/publication assets
-- [x] 1.1.0 release notes and verification checklist prepared
-- [x] Package/citation/API snapshot/README/changelog metadata promoted to 1.1.0
-- [ ] Verify Quality, CI, and Project Matrix on the exact release commit
+- [x] Package/citation/API snapshot/README/changelog metadata promoted to 1.1.0 without changing stable public symbols
+- [x] Canonical `docs/README.md` documentation hub
+- [x] Complete user, developer, project-authoring, portfolio, compatibility, limitations, and release-runbook documentation
+- [x] Repository completeness validator and `make repository-check`
+- [x] Quality workflow integration for repository completeness, documentation, project, API, build, and release-candidate gates
+- [x] Expanded testing strategy and exact-release-commit checklist
+- [x] 1.1.0 release notes prepared
+- [ ] Verify repository completeness, Quality, CI, Project Matrix, and triggered release/documentation checks on the exact final release commit
 - [ ] Create immutable `v1.1.0` tag and GitHub release
 - [ ] Attach verified software wheel/source/checksum assets from the immutable tag
+- [ ] Update release status/checklist after publication and close the release-tracking issue
 
 ## After 1.1.0
 
-Future 1.x work should remain backward-compatible: additional optional projects, project fixtures, accessibility improvements, maintenance automation, stronger documentation, and future security updates. Major API redesigns should wait for a future major version.
+Future 1.x work should remain backward-compatible and maintenance-focused: bug fixes with regression evidence, optional project additions, accessibility improvements, documentation corrections, dependency/action security updates, and release automation maintenance. Major public-API redesigns should wait for a future major version.
 
 ## Complete book roadmap
 
