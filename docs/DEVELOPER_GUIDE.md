@@ -15,6 +15,7 @@ The repository favors:
 - stable 1.x API compatibility,
 - local/synthetic examples by default,
 - reproducible release evidence,
+- exact-commit release provenance,
 - clear security/privacy/publication boundaries.
 
 ## Local setup
@@ -55,11 +56,11 @@ Standard-library unit tests and integration invariants.
 
 ### `scripts/`
 
-Repository-quality, release, catalog, packaging, checksum, and boundary validators.
+Repository-quality, release, catalog, packaging, checksum, automation-contract, and publication-boundary validators.
 
 ### `.github/workflows/`
 
-Cross-platform and release automation. Third-party actions are pinned to full commit SHAs.
+Cross-platform quality and release automation. Third-party actions are pinned to full commit SHAs. Stable publication must preserve exact verified source identity and immutable-tag artifact provenance.
 
 ## Change categories
 
@@ -81,7 +82,21 @@ Follow the project authoring contract, update `projects/catalog.json`, and keep 
 
 ### Documentation-only change
 
-Documentation changes must pass repository-local Markdown link validation and must preserve canonical long-lived links.
+Documentation changes must pass repository-local Markdown link validation and preserve canonical long-lived links.
+
+### Release-workflow change
+
+Treat publication automation as production infrastructure. A release-workflow change must pass:
+
+- workflow pin validation,
+- release automation contract validation,
+- repository completeness,
+- Release Check,
+- Quality,
+- Project Matrix when triggered,
+- documentation link validation when documentation changes.
+
+Do not bypass exact-commit release requirements to make publication faster.
 
 ## Stable API checks
 
@@ -95,21 +110,23 @@ If the stable public symbol set intentionally changes, update the committed API 
 
 ## Core validation
 
-Before proposing a change, run:
+Before proposing a broad change, run:
 
 ```bash
+python scripts/check_repository_completeness.py
 python scripts/check_package_metadata.py
 python scripts/check_release_documentation.py
 python scripts/check_workflow_pins.py
+python scripts/check_release_automation.py
 python scripts/check_public_repository_boundary.py
 python scripts/check_project_links.py
 python scripts/check_unstable_social_links.py
 python scripts/check_markdown_links.py
 python scripts/check_public_api.py --require-version-match
 python scripts/check_project_catalog.py
+python -m unittest discover -s tests -v
 python scripts/check_projects.py
 python scripts/check_project_snapshots.py
-python -m unittest discover -s tests -v
 ```
 
 For a 1.1.0 release candidate also run:
@@ -117,6 +134,27 @@ For a 1.1.0 release candidate also run:
 ```bash
 python scripts/check_release_candidate.py
 ```
+
+## Release automation validation
+
+Run:
+
+```bash
+python scripts/check_release_automation.py
+```
+
+This verifies the durable publication contract, including:
+
+- Quality-to-publication workflow chaining,
+- exact current-main SHA matching,
+- required exact-SHA workflow evidence,
+- dynamic `v<version>` resolution,
+- versioned release notes/checklist requirements,
+- stable publication to asset-workflow chaining,
+- immutable-tag asset rebuilding,
+- absence of stale hard-coded historical release tags.
+
+It is a source-structure check; actual GitHub workflow results remain the runtime evidence.
 
 ## Build validation
 
@@ -137,12 +175,17 @@ On compatible systems:
 make install
 make test
 make examples
+make repository-check
+make release-automation
 make project-catalog
 make projects
 make project-snapshots
 make release-check
+make verify
 make build
 ```
+
+`make verify` runs the main local structural/test/project/release-candidate checks in one sequence. GitHub Actions still provides the authoritative cross-platform/exact-commit workflow evidence.
 
 ## Error-handling expectations
 
@@ -155,13 +198,17 @@ Scripts should:
 - print actionable failure descriptions,
 - avoid modifying source files unless modification is their documented purpose.
 
+Release workflows should fail closed: incomplete or failed required verification must block stable publication rather than silently continue.
+
 ## Determinism
 
 Tests, examples, project snapshots, and release metadata should avoid accidental nondeterminism. If randomness is part of a demonstration, seed it explicitly or constrain validation to deterministic subsets.
 
+Stable release source identity must be deterministic: a published tag identifies one exact commit and must not later move.
+
 ## Cross-platform behavior
 
-Do not assume POSIX-only paths inside Python. Prefer `pathlib.Path`. Shell-specific commands belong in documentation or workflows that explicitly declare the shell. The Project Matrix validates the project suite on Linux, Windows, and macOS.
+Do not assume POSIX-only paths inside Python. Prefer `pathlib.Path`. Shell-specific commands belong in documentation or workflows that explicitly declare the shell. The Project Matrix validates repository/project behavior on Linux, Windows, and macOS.
 
 ## Security and privacy review
 
@@ -178,9 +225,11 @@ Never add secrets or real private user data to test fixtures.
 
 External GitHub Actions must remain pinned to full commit SHAs. Keep workflow permissions minimal. Do not introduce broad write permissions unless the workflow's exact release function requires them.
 
+Stable publication currently needs `actions: read` to inspect exact-SHA workflow evidence and `contents: write` to create the release. Release-asset automation needs `contents: write` to upload software assets. Other validation workflows should remain read-only unless a documented need exists.
+
 ## Documentation expectations
 
-Every user-visible feature should have an discoverable documentation path from [`docs/README.md`](README.md) or the repository root README. New concepts should document:
+Every user-visible feature should have a discoverable documentation path from [`docs/README.md`](README.md) or the repository root README. New concepts should document:
 
 - purpose,
 - command/API usage,
@@ -190,9 +239,23 @@ Every user-visible feature should have an discoverable documentation path from [
 - limitations,
 - security/privacy notes when relevant.
 
+Release automation changes should also update [`RELEASE_RUNBOOK.md`](RELEASE_RUNBOOK.md), [`RELEASE_ASSETS.md`](RELEASE_ASSETS.md), and versioned release/checklist documentation when behavior changes materially.
+
 ## Release discipline
 
-Do not tag a release merely because the source appears correct. Follow [`RELEASE_RUNBOOK.md`](RELEASE_RUNBOOK.md), verify the intended immutable commit, and publish only the software companion artifacts appropriate for the Apache-2.0 repository.
+Do not tag a release merely because the source appears correct. Follow [`RELEASE_RUNBOOK.md`](RELEASE_RUNBOOK.md).
+
+For stable publication:
+
+1. verify a final branch/PR head,
+2. ensure required workflows pass on that exact SHA,
+3. promote that exact source to `main`,
+4. allow main verification to complete,
+5. let the stable-publication workflow verify exact-SHA evidence and create `v<version>`,
+6. let the asset workflow rebuild and verify software from the immutable tag,
+7. verify release target, version, assets, checksums, and publication boundary.
+
+Do not move a published stable tag. Fix a defective release with a new patch version.
 
 ## Commercial publication boundary
 
