@@ -45,6 +45,8 @@ jobs:
           done
       - name: Smoke-test companion projects
         run: python scripts/check_projects.py
+      - name: Validate capstone project snapshots
+        run: python scripts/check_project_snapshots.py
       - name: Build package
         run: |
           python -m pip install build
