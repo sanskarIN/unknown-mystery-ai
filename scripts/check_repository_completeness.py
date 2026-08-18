@@ -96,8 +96,30 @@ REQUIRED_WORKFLOWS = {
     "docs-links.yml",
     "examples.yml",
     "projects.yml",
+    "publish-stable.yml",
     "quality.yml",
+    "release-assets.yml",
+    "release-candidate.yml",
     "release-check.yml",
+}
+
+REQUIRED_SCRIPTS = {
+    "check_distribution_contents.py",
+    "check_markdown_links.py",
+    "check_package_metadata.py",
+    "check_project_catalog.py",
+    "check_project_links.py",
+    "check_project_snapshots.py",
+    "check_projects.py",
+    "check_public_api.py",
+    "check_public_repository_boundary.py",
+    "check_release_automation.py",
+    "check_release_candidate.py",
+    "check_release_documentation.py",
+    "check_repository_completeness.py",
+    "check_unstable_social_links.py",
+    "check_workflow_pins.py",
+    "create_checksum_manifest.py",
 }
 
 
@@ -122,6 +144,12 @@ def main() -> int:
     missing_workflows = sorted(REQUIRED_WORKFLOWS - present_workflows)
     if missing_workflows:
         failures.append(f"missing required workflows: {missing_workflows}")
+
+    scripts_dir = ROOT / "scripts"
+    present_scripts = {path.name for path in scripts_dir.glob("*.py")} if scripts_dir.is_dir() else set()
+    missing_scripts = sorted(REQUIRED_SCRIPTS - present_scripts)
+    if missing_scripts:
+        failures.append(f"missing required quality/release scripts: {missing_scripts}")
 
     catalog_path = ROOT / "projects" / "catalog.json"
     if not catalog_path.is_file():
@@ -169,6 +197,7 @@ def main() -> int:
     print(f"- top-level contract: {len(REQUIRED_TOP_LEVEL)} paths")
     print(f"- documentation baseline: {len(REQUIRED_DOCS)} documents")
     print(f"- required workflows: {len(REQUIRED_WORKFLOWS)}")
+    print(f"- required validation scripts: {len(REQUIRED_SCRIPTS)}")
     print("- project catalog: 25 records")
     print(f"- official store: {GUMROAD}")
     return 0
