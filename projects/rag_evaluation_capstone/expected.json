@@ -1,0 +1,10 @@
+{
+  "project": "RAG Evaluation Capstone",
+  "metrics": {
+    "precision_at_3": 0.6666666666666666,
+    "recall_at_3": 1.0,
+    "reciprocal_rank": 1.0
+  },
+  "regression": {"passed": true, "missing": [], "forbidden_found": []},
+  "store": "https://ramsandesh.gumroad.com"
+}
