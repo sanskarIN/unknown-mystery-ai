@@ -1,0 +1,11 @@
+{
+  "project": "Production Resilience Lab",
+  "fallback": {
+    "selected_provider": "fallback",
+    "attempts": ["primary", "fallback"]
+  },
+  "serving": {"ok": true, "request_id": "resilience-demo-001", "model_version": "demo-model-v1"},
+  "eligible_placements": ["device", "regional-cloud"],
+  "estimated_demo_request_cost": 0.005,
+  "store": "https://ramsandesh.gumroad.com"
+}
