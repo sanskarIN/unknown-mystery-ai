@@ -18,7 +18,7 @@
 
 > ## 🛒 Official store: **https://ramsandesh.gumroad.com**
 
-This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Version **1.0.1** is a backward-compatible stable maintenance release with dependency-light code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, packaging checks, supply-chain hardening, tests, and engineering documentation that complement the 120-chapter AI mastery journey.
+This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Version **1.0.1** is a backward-compatible stable maintenance release with dependency-light code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, packaging checks, supply-chain hardening, tests, runnable portfolio projects, and engineering documentation that complement the 120-chapter AI mastery journey.
 
 The repository is intentionally **inspectable, testable, local/synthetic by default, and safe for learning**. Small teaching utilities are not presented as automatic substitutes for production security, privacy, scalability, governance, or reliability engineering.
 
@@ -35,6 +35,7 @@ The repository is intentionally **inspectable, testable, local/synthetic by defa
 - Privacy redaction, structured validation, cost budgeting, caching, retries, fallback, and rate limiting
 - CLI-friendly JSON/text reporting and `python -m umai` execution
 - PEP 561 inline typing support
+- Ten complete companion projects with automated smoke validation
 - Responsible AI, privacy, security, reproducibility, supply-chain, accessibility, and governance guidance
 
 ## Quick start
@@ -73,6 +74,7 @@ Or use the Makefile on compatible systems:
 make install
 make test
 make examples
+make projects
 ```
 
 For stable release installation options, see [`docs/INSTALLATION.md`](docs/INSTALLATION.md).
@@ -83,6 +85,29 @@ The numbered example suite covers reproducibility, evaluation, RAG, agents, rele
 
 See **[`examples/README.md`](examples/README.md)**.
 
+## Companion projects
+
+The repository now includes ten larger runnable projects:
+
+- RAG Knowledge Explorer
+- Prompt Regression Lab
+- Release Gate Simulator
+- Edge Cloud Planner
+- Privacy Audit Workbench
+- Experiment Leaderboard
+- Model Monitoring Lab
+- Agent Router Sandbox
+- Evaluation Report Studio
+- Cost Budget Planner
+
+Run all project smoke checks with:
+
+```bash
+python scripts/check_projects.py
+```
+
+See **[`projects/README.md`](projects/README.md)** and **[`docs/PROJECTS.md`](docs/PROJECTS.md)** for the project index, commands, learning order, extension ideas, and production boundaries.
+
 ## Repository map
 
 ```text
@@ -91,7 +116,8 @@ unknown-mystery-ai/
 ├── assets/                    # Gumroad badge and repository visual assets
 ├── docs/                      # Architecture, API, learning, governance, release docs
 ├── examples/                  # Small runnable teaching examples
-├── scripts/                   # Quality and release-evidence scripts
+├── projects/                  # Complete runnable companion projects
+├── scripts/                   # Quality, project, and release-evidence scripts
 ├── src/umai/                  # Stable dependency-light typed companion package
 ├── tests/                     # Standard-library unit tests
 ├── .github/                   # CI, quality, funding, Dependabot, templates
@@ -109,6 +135,7 @@ Recommended starting points:
 
 - [`docs/BOOK_COMPANION.md`](docs/BOOK_COMPANION.md) — how this repository complements the book
 - [`docs/CHAPTER_COMPANION_INDEX.md`](docs/CHAPTER_COMPANION_INDEX.md) — 120-chapter block mapping
+- [`docs/PROJECTS.md`](docs/PROJECTS.md) — runnable companion projects and suggested learning order
 - [`docs/API_REFERENCE.md`](docs/API_REFERENCE.md) — public utility reference
 - [`docs/API_COMPATIBILITY.md`](docs/API_COMPATIBILITY.md) — semantic-versioning and deprecation policy
 - [`docs/STABILITY.md`](docs/STABILITY.md) — 1.x stability guarantees
@@ -144,6 +171,7 @@ The repository includes automated checks for:
 
 - supported Python tests,
 - cross-platform numbered example smoke runs,
+- all ten companion project default runs and valid JSON output,
 - package metadata/version consistency,
 - release notes/changelog/version consistency,
 - PEP 561 typing marker packaging,
