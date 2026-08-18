@@ -1,0 +1,6 @@
+{
+  "project": "Responsible AI Review Board",
+  "validation_issues": [],
+  "review": {"passed": true, "evidence_passed": true, "failed_gates": []},
+  "store": "https://ramsandesh.gumroad.com"
+}
