@@ -49,16 +49,29 @@ Future 1.x work should remain backward-compatible with the documented stable pub
 - Expanded project index, staged learning-order documentation, catalog contract, and testing strategy
 - Durable social-link policy and automated rejection of change-prone X/Twitter URLs in long-lived repository files
 - 1.1.0 release notes, compatibility rationale, metadata policy, release-candidate verifier, and release checklist
+- `docs/README.md` as the canonical documentation hub for users, developers, maintainers, security/release guidance, and project resources
+- `docs/USER_GUIDE.md` for the complete install/test/example/project/reproducibility workflow
+- `docs/DEVELOPER_GUIDE.md` for implementation, validation, compatibility, build, and release-development practices
+- `docs/PROJECT_AUTHORING_GUIDE.md` defining project directory, JSON output, catalog, snapshot, documentation, testing, security, and licensing contracts
+- `docs/PORTFOLIO_GUIDE.md` for presenting reproducible project evidence and defensible technical tradeoffs
+- `docs/COMPATIBILITY_MATRIX.md` for supported Python versions, operating systems, CLI, API, project, and packaging compatibility
+- `docs/KNOWN_LIMITATIONS.md` documenting educational boundaries, non-goals, and production limitations
+- `docs/RELEASE_RUNBOOK.md` with an exact maintainer procedure for release preparation, verification, immutable tagging, asset review, and patch recovery
+- `scripts/check_repository_completeness.py` to validate required repository structure, documentation baseline, workflows, project-catalog count, and durable links
+- `make repository-check` convenience target
 
 ### Changed
 
 - CI, Quality, Project Matrix, Documentation Links, Example Smoke Tests, and Release Check workflows now cancel superseded runs with workflow/ref-or-PR concurrency groups
 - High-frequency workflow jobs now have explicit timeout limits to prevent indefinitely hanging jobs
-- Quality workflow now validates project catalog integrity, all 25 companion projects, capstone snapshot fixtures, and 1.1.0 release-candidate invariants
-- Project Matrix now validates the machine-readable project catalog before project smoke/snapshot checks
+- Quality workflow now validates repository/documentation completeness before metadata, policy, API, tests, project, build, and distribution checks
+- Quality workflow validates project catalog integrity, all 25 companion projects, capstone snapshot fixtures, and 1.1.0 release-candidate invariants
+- Project Matrix validates the machine-readable project catalog before project smoke/snapshot checks
 - Project smoke inventory expanded from twenty to twenty-five runnable projects
-- README repository map, navigation, badges, and quality-gate documentation now include the capstone and cross-platform project suite
-- `docs/PROJECTS.md` now documents implemented capstones, snapshot contracts, and project verification flow
+- Root README is now a clearer repository hub with validation commands, all 25 projects, a complete documentation entry point, quality gates, limitations, licensing boundaries, and stable durable links
+- `docs/TESTING_STRATEGY.md` now documents repository completeness, API, examples, catalog, project, snapshot, cross-platform, documentation/policy, package, and release-candidate validation layers
+- `docs/RELEASE_1_1_0_CHECKLIST.md` now covers documentation completeness, repository-integrity gates, cross-platform verification, exact-release-commit requirements, and post-release status updates
+- `docs/PROJECTS.md` documents implemented capstones, snapshot contracts, and project verification flow
 - Long-lived project documentation prefers stable GitHub, repository, Gumroad, and email destinations over X/Twitter profile URLs
 - Package, citation, README, changelog, and stable 1.x API-snapshot metadata promoted to 1.1.0 without changing the documented public symbol set
 
