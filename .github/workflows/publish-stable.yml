@@ -1,4 +1,4 @@
-name: Publish Stable 1.0.1
+name: Publish Stable
 
 on:
   workflow_run:
@@ -6,6 +6,7 @@ on:
     types: [completed]
 
 permissions:
+  actions: read
   contents: write
 
 jobs:
@@ -14,6 +15,8 @@ jobs:
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.head_branch == 'main'
     runs-on: ubuntu-latest
+    timeout-minutes: 25
+
     steps:
       - name: Check out current main
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -21,7 +24,7 @@ jobs:
           ref: main
           fetch-depth: 0
 
-      - name: Require the verified run to match current main
+      - name: Require the verified Quality run to match current main
         id: current
         shell: bash
         run: |
@@ -30,12 +33,12 @@ jobs:
           echo "current_sha=$CURRENT_SHA" >> "$GITHUB_OUTPUT"
           if [ "$CURRENT_SHA" != "$VERIFIED_SHA" ]; then
             echo "publish=false" >> "$GITHUB_OUTPUT"
-            echo "A newer main commit exists; skipping release from older verified SHA."
+            echo "A newer main commit exists; skipping publication from an older Quality run."
             exit 0
           fi
           echo "publish=true" >> "$GITHUB_OUTPUT"
 
-      - name: Verify stable package version
+      - name: Resolve and validate release metadata
         if: steps.current.outputs.publish == 'true'
         id: version
         shell: bash
@@ -46,29 +49,123 @@ jobs:
           print(tomllib.loads(Path('pyproject.toml').read_text(encoding='utf-8'))['project']['version'])
           PY
           )"
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          if [ "$VERSION" != "1.0.1" ]; then
-            echo "publish=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "publish=true" >> "$GITHUB_OUTPUT"
+          python - "$VERSION" <<'PY'
+          import re
+          import sys
+          version = sys.argv[1]
+          if not re.fullmatch(r"\d+\.\d+\.\d+", version):
+              raise SystemExit(f"Stable publication requires x.y.z version metadata, got: {version}")
+          PY
 
-      - name: Create v1.0.1 tag and GitHub release
-        if: >-
-          steps.current.outputs.publish == 'true' &&
-          steps.version.outputs.publish == 'true'
+          TAG="v$VERSION"
+          VERSION_KEY="${VERSION//./_}"
+          NOTES="docs/COMPANION_RELEASE_${VERSION}.md"
+          CHECKLIST="docs/RELEASE_${VERSION_KEY}_CHECKLIST.md"
+
+          test -f "$NOTES"
+          test -f "$CHECKLIST"
+          grep -F "## [$VERSION]" CHANGELOG.md >/dev/null
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "notes=$NOTES" >> "$GITHUB_OUTPUT"
+          echo "checklist=$CHECKLIST" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for exact-commit verification stack
+        if: steps.current.outputs.publish == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_SHA: ${{ steps.current.outputs.current_sha }}
         shell: bash
         run: |
-          if gh release view v1.0.1 >/dev/null 2>&1; then
-            echo "v1.0.1 release already exists; leaving it unchanged."
+          REQUIRED="CI|Quality|Project Matrix|Documentation Links|Release Check"
+          for ATTEMPT in $(seq 1 80); do
+            gh run list \
+              --commit "$RELEASE_SHA" \
+              --limit 100 \
+              --json name,status,conclusion,event,createdAt > workflow-runs.json
+
+            set +e
+            python - "$REQUIRED" <<'PY'
+          import json
+          import sys
+
+          required = sys.argv[1].split("|")
+          runs = json.loads(open("workflow-runs.json", encoding="utf-8").read())
+
+          pending = []
+          failed = []
+          missing = []
+
+          for name in required:
+              matches = [run for run in runs if run.get("name") == name]
+              if not matches:
+                  missing.append(name)
+                  continue
+              latest = matches[0]
+              status = latest.get("status")
+              conclusion = latest.get("conclusion")
+              if status != "completed":
+                  pending.append(f"{name} ({status})")
+              elif conclusion != "success":
+                  failed.append(f"{name} ({conclusion})")
+
+          if failed:
+              print("Required verification failed:")
+              for item in failed:
+                  print(f"- {item}")
+              raise SystemExit(1)
+
+          if pending or missing:
+              print("Verification is not complete yet:")
+              for item in pending:
+                  print(f"- pending: {item}")
+              for item in missing:
+                  print(f"- missing: {item}")
+              raise SystemExit(2)
+
+          print("Exact-commit verification stack: PASS")
+          for name in required:
+              print(f"- {name}: success")
+          PY
+            RESULT=$?
+            set -e
+
+            if [ "$RESULT" -eq 0 ]; then
+              exit 0
+            fi
+            if [ "$RESULT" -eq 1 ]; then
+              exit 1
+            fi
+
+            echo "Waiting for required workflow runs (attempt $ATTEMPT/80)..."
+            sleep 15
+          done
+
+          echo "Timed out waiting for required verification workflows."
+          exit 1
+
+      - name: Create immutable stable tag and GitHub release
+        if: steps.current.outputs.publish == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.version.outputs.tag }}
+          VERSION: ${{ steps.version.outputs.version }}
+          NOTES: ${{ steps.version.outputs.notes }}
+          RELEASE_SHA: ${{ steps.current.outputs.current_sha }}
+        shell: bash
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "$TAG already exists; leaving the published stable release unchanged."
             exit 0
           fi
-          gh release create v1.0.1 \
-            --target "${{ steps.current.outputs.current_sha }}" \
-            --title "UMAI Companion v1.0.1" \
-            --notes-file docs/COMPANION_RELEASE_1.0.1.md
 
-# Commercial book editions remain separate from GitHub releases.
+          gh release create "$TAG" \
+            --target "$RELEASE_SHA" \
+            --title "UMAI Companion v$VERSION" \
+            --notes-file "$NOTES"
+
+          echo "Published $TAG from verified commit $RELEASE_SHA."
+
+# Commercial book editions remain separate from GitHub software releases.
 # Official publication: https://ramsandesh.gumroad.com
