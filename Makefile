@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-.PHONY: install test examples repository-check project-catalog projects project-snapshots release-check build clean
+.PHONY: install test examples repository-check project-catalog projects project-snapshots release-automation release-check verify build clean
 
 install:
 	$(PYTHON) -m pip install -e .
@@ -26,8 +26,13 @@ projects:
 project-snapshots:
 	$(PYTHON) scripts/check_project_snapshots.py
 
+release-automation:
+	$(PYTHON) scripts/check_release_automation.py
+
 release-check:
 	$(PYTHON) scripts/check_release_candidate.py
+
+verify: repository-check release-automation test project-catalog projects project-snapshots release-check
 
 build:
 	$(PYTHON) -m build
