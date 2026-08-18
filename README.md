@@ -11,6 +11,7 @@
 <p align="center">
   <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/ci.yml/badge.svg"></a>
   <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/quality.yml"><img alt="Quality" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/quality.yml/badge.svg"></a>
+  <a href="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/projects.yml"><img alt="Project Matrix" src="https://github.com/sanskarIN/unknown-mystery-ai/actions/workflows/projects.yml/badge.svg"></a>
   <img alt="Version 1.0.1" src="https://img.shields.io/badge/version-1.0.1-brightgreen">
   <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-Apache--2.0-blue"></a>
   <a href="https://ramsandesh.gumroad.com"><img alt="Gumroad" src="https://img.shields.io/badge/Gumroad-Official%20Store-ff90e8"></a>
@@ -18,7 +19,7 @@
 
 > ## 🛒 Official store: **https://ramsandesh.gumroad.com**
 
-This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Version **1.0.1** is a backward-compatible stable maintenance release with dependency-light code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, packaging checks, supply-chain hardening, tests, runnable portfolio projects, and engineering documentation that complement the 120-chapter AI mastery journey.
+This is the official open-source companion repository for **_The Unknown Mystery of the AI_** by **Ram Sandesh**. Version **1.0.1** is a backward-compatible stable maintenance release with dependency-light code examples, evaluation helpers, reproducibility utilities, RAG/agent patterns, deployment primitives, release evidence, operational safeguards, packaging checks, supply-chain hardening, tests, **25 runnable portfolio projects**, and engineering documentation that complement the 120-chapter AI mastery journey.
 
 The repository is intentionally **inspectable, testable, local/synthetic by default, and safe for learning**. Small teaching utilities are not presented as automatic substitutes for production security, privacy, scalability, governance, or reliability engineering.
 
@@ -35,7 +36,9 @@ The repository is intentionally **inspectable, testable, local/synthetic by defa
 - Privacy redaction, structured validation, cost budgeting, caching, retries, fallback, and rate limiting
 - CLI-friendly JSON/text reporting and `python -m umai` execution
 - PEP 561 inline typing support
-- Twenty complete companion projects with automated smoke validation
+- 25 complete companion projects with automated JSON smoke validation
+- Five integrated capstones with stable subset snapshot fixtures
+- Cross-platform project verification on Linux, Windows, and macOS
 - Responsible AI, privacy, security, reproducibility, supply-chain, accessibility, and governance guidance
 
 ## Quick start
@@ -75,6 +78,7 @@ make install
 make test
 make examples
 make projects
+make project-snapshots
 ```
 
 For stable release installation options, see [`docs/INSTALLATION.md`](docs/INSTALLATION.md).
@@ -87,36 +91,56 @@ See **[`examples/README.md`](examples/README.md)**.
 
 ## Companion projects
 
-The repository now includes twenty larger runnable projects:
+The repository includes 25 runnable projects across five learning groups.
+
+### Foundation and evaluation
 
 - Evaluation Report Studio
 - Experiment Leaderboard
 - RAG Knowledge Explorer
 - Retrieval Ranking Benchmark
 - Text Chunking Lab
+
+### Prompting, agents, and serving
+
 - Prompt Template Studio
 - Prompt Regression Lab
 - Agent Router Sandbox
 - Local Serving Contract
 - Resilient Request Pipeline
+
+### Governance and release engineering
+
 - Artifact Registry Workflow
 - Release Manifest Builder
 - Evidence Bundle Builder
 - Release Comparison Dashboard
 - Release Gate Simulator
+
+### Deployment, operations, privacy, and cost
+
 - Feature Flag Rollout Lab
 - Edge Cloud Planner
 - Model Monitoring Lab
 - Privacy Audit Workbench
 - Cost Budget Planner
 
-Run all project smoke checks with:
+### Integrated capstones
+
+- AI Release Readiness Console
+- RAG Evaluation Capstone
+- MLOps Release Pipeline
+- Responsible AI Review Board
+- Production Resilience Lab
+
+Run the complete project suite and capstone snapshot checks with:
 
 ```bash
 python scripts/check_projects.py
+python scripts/check_project_snapshots.py
 ```
 
-See **[`projects/README.md`](projects/README.md)** and **[`docs/PROJECTS.md`](docs/PROJECTS.md)** for the project index, commands, learning order, extension ideas, and production boundaries.
+See **[`projects/README.md`](projects/README.md)** and **[`docs/PROJECTS.md`](docs/PROJECTS.md)** for the project index, commands, learning order, snapshot contracts, extension ideas, and production boundaries.
 
 ## Repository map
 
@@ -126,11 +150,11 @@ unknown-mystery-ai/
 ├── assets/                    # Gumroad badge and repository visual assets
 ├── docs/                      # Architecture, API, learning, governance, release docs
 ├── examples/                  # Small runnable teaching examples
-├── projects/                  # Complete runnable companion projects
-├── scripts/                   # Quality, project, and release-evidence scripts
+├── projects/                  # 25 complete runnable companion projects
+├── scripts/                   # Quality, project, snapshot, and release-evidence scripts
 ├── src/umai/                  # Stable dependency-light typed companion package
 ├── tests/                     # Standard-library unit tests
-├── .github/                   # CI, quality, funding, Dependabot, templates
+├── .github/                   # CI, project matrix, quality, funding, templates
 ├── Dockerfile                 # Non-root companion container example
 ├── MANIFEST.in                # Source distribution manifest
 ├── LICENSE                    # Apache License 2.0 for source code
@@ -145,7 +169,7 @@ Recommended starting points:
 
 - [`docs/BOOK_COMPANION.md`](docs/BOOK_COMPANION.md) — how this repository complements the book
 - [`docs/CHAPTER_COMPANION_INDEX.md`](docs/CHAPTER_COMPANION_INDEX.md) — 120-chapter block mapping
-- [`docs/PROJECTS.md`](docs/PROJECTS.md) — runnable companion projects and suggested learning order
+- [`docs/PROJECTS.md`](docs/PROJECTS.md) — 25 runnable projects and suggested learning order
 - [`docs/API_REFERENCE.md`](docs/API_REFERENCE.md) — public utility reference
 - [`docs/API_COMPATIBILITY.md`](docs/API_COMPATIBILITY.md) — semantic-versioning and deprecation policy
 - [`docs/STABILITY.md`](docs/STABILITY.md) — 1.x stability guarantees
@@ -163,6 +187,7 @@ Recommended starting points:
 - [`docs/DEPENDABOT.md`](docs/DEPENDABOT.md) — dependency-update review policy
 - [`docs/ACCESSIBILITY.md`](docs/ACCESSIBILITY.md) — accessible documentation/output guidance
 - [`docs/EXAMPLE_CONTRACTS.md`](docs/EXAMPLE_CONTRACTS.md) — numbered example compatibility rules
+- [`docs/SOCIAL_LINK_POLICY.md`](docs/SOCIAL_LINK_POLICY.md) — durable-link policy that avoids change-prone X/Twitter profile URLs
 - [`docs/BRANCH_PROTECTION.md`](docs/BRANCH_PROTECTION.md) — recommended `main` protection settings
 - [`docs/SIGNING.md`](docs/SIGNING.md) — prospective commit/tag signing guidance
 - [`docs/REPOSITORY_SETTINGS.md`](docs/REPOSITORY_SETTINGS.md) — recommended GitHub settings and topics
@@ -181,13 +206,16 @@ The repository includes automated checks for:
 
 - supported Python tests,
 - cross-platform numbered example smoke runs,
-- all twenty companion project default runs and valid JSON output,
+- all 25 companion project default runs and valid JSON output,
+- capstone stable-subset snapshot fixtures,
+- Linux/Windows/macOS project matrix verification,
 - package metadata/version consistency,
 - release notes/changelog/version consistency,
 - PEP 561 typing marker packaging,
 - full-commit-SHA GitHub Action pins,
 - public-repository commercial manuscript boundaries,
 - canonical Gumroad/repository/contact links in key files,
+- rejection of durable X/Twitter profile URLs outside the documented policy exception,
 - internal Markdown links,
 - public API snapshot consistency,
 - wheel/source distribution contents,
@@ -223,6 +251,8 @@ The Gumroad store is the primary place for official book releases, updated comme
 - Repository: **https://github.com/sanskarIN/unknown-mystery-ai**
 - Gumroad: **https://ramsandesh.gumroad.com**
 - Contact: **sanskarin@outlook.in**
+
+Long-lived files intentionally do not depend on an X/Twitter profile URL. See [`docs/SOCIAL_LINK_POLICY.md`](docs/SOCIAL_LINK_POLICY.md).
 
 ## Contributing
 
