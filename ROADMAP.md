@@ -89,9 +89,26 @@ The companion repository grows through small, reviewable additions rather than c
 - [x] `v1.0.1` released from a Quality-verified commit
 - [x] Wheel, source archive, and SHA-256 manifest attached from the immutable `v1.0.1` tag
 
-## After 1.0.1
+## v1.1.0 — Portfolio projects and integrated capstones
 
-Future work should remain incremental and backward-compatible within 1.x: additional examples, optional adapters, accessibility improvements, evaluation scenarios, documentation, maintenance automation, and future security updates. Major API redesigns should wait for a future major version.
+- [x] 25 complete runnable companion projects
+- [x] Five project groups covering evaluation, prompting/agents, release engineering, operations/privacy/cost, and integrated mastery
+- [x] Five integrated capstone projects
+- [x] Exact project-inventory smoke validation
+- [x] Stable-subset JSON snapshot fixtures for capstones
+- [x] Focused project tests in the standard unit-test suite
+- [x] Cross-platform Project Matrix on Linux, Windows, and macOS
+- [x] Expanded project/testing documentation
+- [x] Durable social-link policy for long-lived repository/publication assets
+- [x] 1.1.0 release notes and verification checklist prepared
+- [ ] Promote package/citation/API snapshot/readme/changelog metadata to 1.1.0
+- [ ] Verify Quality, CI, and Project Matrix on the exact release commit
+- [ ] Create immutable `v1.1.0` tag and GitHub release
+- [ ] Attach verified software wheel/source/checksum assets from the immutable tag
+
+## After 1.1.0
+
+Future 1.x work should remain backward-compatible: additional optional projects, project fixtures, accessibility improvements, maintenance automation, stronger documentation, and future security updates. Major API redesigns should wait for a future major version.
 
 ## Complete book roadmap
 
